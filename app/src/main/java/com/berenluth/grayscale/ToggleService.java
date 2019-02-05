@@ -1,4 +1,4 @@
-package com.fei_ke.greyscale;
+package com.berenluth.grayscale;
 
 import android.annotation.TargetApi;
 import android.os.Build;

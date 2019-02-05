@@ -1,4 +1,4 @@
-package com.fei_ke.greyscale;
+package com.berenluth.grayscale;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -13,8 +13,6 @@ import android.provider.Settings.Secure;
 import android.widget.Toast;
 
 import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 
 public class Util {
     private static final String PERMISSION = "android.permission.WRITE_SECURE_SETTINGS";

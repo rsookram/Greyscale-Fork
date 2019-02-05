@@ -1,16 +1,14 @@
 apply plugin: 'com.android.application'
-
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    buildToolsVersion '28.0.3'
     defaultConfig {
-        applicationId "com.fei_ke.greyscale"
+        applicationId 'com.berenluth.grayscale'
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 3
         versionName "1.2"
     }
-
     signingConfigs {
         release {
             storeFile file(STORE_FILE_PATH)
@@ -28,4 +26,9 @@ android {
             signingConfig signingConfigs.release
         }
     }
+    productFlavors {
+    }
+}
+
+dependencies {
 }
