@@ -1,9 +1,15 @@
 <resources>
-    <string name="app_name">Greyscale</string>
+    <string name="app_name">Grayscale</string>
     <string name="tips_title">Need Permission!</string>
     <string name="tips_ok">OK</string>
     <string name="tips_copy">COPY</string>
     <string name="copy_done">Copy Success</string>
     <string name="tips">Before use this Application, you need to use adb tools to grant permission, copy below command and exec it on a PC:\n\n%1$s\n\nOr you can use root to grant permission.</string>
     <string name="root_failure">root permission not granted</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+    <string name="off">OFF</string>
+    <string name="on">ON</string>
+    <string name="title_default">Default</string>
+    <string name="off_description">When the default state is OFF, the display will remain in grayscale mode until you disable it for 30 minutes from the quick settings panel.</string>
+    <string name="on_description">When the default state is ON, the display will not be affected, but you can still turn on the grayscale temporary for 30 minutes from the quick settings panel.</string>
 </resources>
