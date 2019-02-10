@@ -15,6 +15,7 @@ import java.util.Calendar;
 @TargetApi(Build.VERSION_CODES.N)
 public class ToggleService extends TileService {
 
+
     @Override
     public void onClick() {
         super.onClick();
@@ -36,17 +37,14 @@ public class ToggleService extends TileService {
         Intent i = new Intent(getApplicationContext(), TimerReceiver.class);
         PendingIntent sender = PendingIntent.getBroadcast(this, getQsTile().getState(), i, PendingIntent.FLAG_CANCEL_CURRENT);
 
-        //Duration in - SECONDS -
-        int duration = 5;
-
         Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.SECOND, duration);
+        cal.add(UtilValues.TIME_UNIT, UtilValues.DURATION);
 
         AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
         am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), sender);
 
-        Toast.makeText(this, "Timer setted for " + duration + " seconds", Toast.LENGTH_SHORT).show();
-        Log.d("Tile", "Timer setted for " + duration + " seconds");
+        Toast.makeText(this, "Timer setted for " + UtilValues.DURATION + " seconds", Toast.LENGTH_SHORT).show();
+        Log.d("Tile", "Timer setted for " + UtilValues.DURATION + " seconds");
     }
 
 
