@@ -7,7 +7,7 @@ class UtilValues{
 
         //App settings
         const val DURATION = 10
-        const val TIME_UNIT = Calendar.SECOND
+        const val TIME_UNIT = Calendar.MINUTE
 
         //other values...
         const val GENERAL_PREFERENCES = "general_preferences"
