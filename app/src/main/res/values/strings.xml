@@ -12,4 +12,12 @@
     <string name="title_default">Default</string>
     <string name="off_description">When the default mode is OFF, the display will remain in grayscale mode until you disable it for 30 minutes from the quick settings panel.</string>
     <string name="on_description">When the default mode is ON, the display will not be affected, but you can still turn on the grayscale temporary for 30 minutes from the quick settings panel.</string>
+    <string name="toggle_duration">Fast switch duration: %1$d %2$s</string>
+    <string name="minutes">minutes</string>
+    <string name="hours">hours</string>
+    <string name="toggle_explanation">When you press the greyscale toggle in your quick settings, you\'ll enable/disable the grayscale mode by the selected amount of time</string>
+    <string name="app_info">
+        This app has been made by Fabio Rosada, all the arts are made by Natalia Petliak.\n\nThe code is open source and you can find it on github at this link https://github.com/BerenLuth/Greyscale\nIt\'s a fork of Grayscale app made by Fei-ke and you can find his original source code at this link https://github.com/fei-ke/Greyscale\n\n</string>
+    <string name="save">Save</string>
+    <string name="preferences_saved">Preferences saved</string>
 </resources>

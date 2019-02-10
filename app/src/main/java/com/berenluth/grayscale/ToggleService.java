@@ -3,7 +3,9 @@ package com.berenluth.grayscale;
 import android.annotation.TargetApi;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
@@ -15,6 +17,7 @@ import java.util.Calendar;
 @TargetApi(Build.VERSION_CODES.N)
 public class ToggleService extends TileService {
 
+    int duration = UtilValues.DURATION;
 
     @Override
     public void onClick() {
@@ -37,13 +40,16 @@ public class ToggleService extends TileService {
         Intent i = new Intent(getApplicationContext(), TimerReceiver.class);
         PendingIntent sender = PendingIntent.getBroadcast(this, getQsTile().getState(), i, PendingIntent.FLAG_CANCEL_CURRENT);
 
+        SharedPreferences pref = getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE);
+        duration = Util.intToMinutes(pref.getInt(UtilValues.TOGGLE_DURATION, 1));
+
         Calendar cal = Calendar.getInstance();
-        cal.add(UtilValues.TIME_UNIT, UtilValues.DURATION);
+        cal.add(UtilValues.TIME_UNIT, duration);
 
         AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
         am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), sender);
 
-        Toast.makeText(this, "Timer setted for " + UtilValues.DURATION + " seconds", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Timer setted for " + duration + " minutes", Toast.LENGTH_SHORT).show();
         Log.d("Tile", "Timer setted for " + UtilValues.DURATION + " seconds");
     }
 

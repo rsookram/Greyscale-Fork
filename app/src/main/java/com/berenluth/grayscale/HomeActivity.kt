@@ -1,8 +1,10 @@
 package com.berenluth.grayscale
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
@@ -33,6 +35,13 @@ class HomeActivity : AppCompatActivity() {
                     //Update user's preference with the new default mode
                     prefs.edit().putBoolean(UtilValues.DEFAULT_MODE, s).apply()
                     Log.d("HomeActivity", "Default_mode changed in: $s")
+                }
+            }
+
+            settings_button.setOnClickListener { _ ->
+                run {
+                    val i = Intent(this, SettingsActivity::class.java)
+                    startActivity(i)
                 }
             }
 

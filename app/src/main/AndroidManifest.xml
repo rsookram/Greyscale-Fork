@@ -29,7 +29,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".HomeActivity"
+        <activity
+            android:name=".HomeActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,6 +40,9 @@
         </activity>
 
         <receiver android:name=".TimerReceiver" />
+
+        <activity android:name=".SettingsActivity"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

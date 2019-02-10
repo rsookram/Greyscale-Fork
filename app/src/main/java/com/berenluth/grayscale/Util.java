@@ -73,4 +73,42 @@ public class Util {
         Secure.putInt(contentResolver, DISPLAY_DALTONIZER_ENABLED, greyscale ? 1 : 0);
         Secure.putInt(contentResolver, DISPLAY_DALTONIZER, greyscale ? 0 : -1);
     }
+
+    public static int intToMinutes(int x){
+        switch (x){
+            case 0:
+                return 15;
+            case 1:
+                return 30;
+            case 2:
+                return 60;
+            case 3:
+                return 2*60;
+            case 4:
+                return 4*60;
+            case 5:
+                return 8*60;
+            default:
+                return 30;
+        }
+    }
+
+    public static int intToTime(int x){
+        switch (x){
+            case 0:
+                return 15;
+            case 1:
+                return 30;
+            case 2:
+                return 60;
+            case 3:
+                return 2;
+            case 4:
+                return 4;
+            case 5:
+                return 8;
+            default:
+                return 30;
+        }
+    }
 }
