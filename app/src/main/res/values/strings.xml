@@ -10,6 +10,6 @@
     <string name="off">OFF</string>
     <string name="on">ON</string>
     <string name="title_default">Default</string>
-    <string name="off_description">When the default state is OFF, the display will remain in grayscale mode until you disable it for 30 minutes from the quick settings panel.</string>
-    <string name="on_description">When the default state is ON, the display will not be affected, but you can still turn on the grayscale temporary for 30 minutes from the quick settings panel.</string>
+    <string name="off_description">When the default mode is OFF, the display will remain in grayscale mode until you disable it for 30 minutes from the quick settings panel.</string>
+    <string name="on_description">When the default mode is ON, the display will not be affected, but you can still turn on the grayscale temporary for 30 minutes from the quick settings panel.</string>
 </resources>

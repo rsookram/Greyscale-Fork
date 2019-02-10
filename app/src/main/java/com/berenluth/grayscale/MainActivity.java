@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.widget.Switch;
 
 public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         if (Util.hasPermission(this)) {
             Util.toggleGreyscale(this, !Util.isGreyscaleEnable(this));

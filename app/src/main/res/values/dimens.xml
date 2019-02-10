@@ -3,5 +3,5 @@
 
     <dimen name="text_title">10pt</dimen>
     <dimen name="text_medium">6pt</dimen>
-    <dimen name="text_big">15pt</dimen>
+    <dimen name="text_big">13pt</dimen>
 </resources>

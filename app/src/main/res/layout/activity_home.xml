@@ -18,6 +18,15 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         />
 
+    <ImageView
+        android:id="@+id/icon_colors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher_colors"
+        app:layout_constraintStart_toStartOf="@id/icon"
+        app:layout_constraintTop_toTopOf="@id/icon"
+        />
+
     <TextView
         android:id="@+id/appname"
         android:layout_width="wrap_content"
@@ -59,8 +68,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/off_description"
-                android:gravity="center"
+                android:gravity="start"
                 android:textSize="@dimen/text_medium"
+                android:padding="16dp"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
@@ -84,8 +94,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/on_description"
-                android:gravity="center"
+                android:gravity="end"
                 android:textSize="@dimen/text_medium"
+                android:padding="16dp"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
@@ -108,7 +119,7 @@
         android:text="@string/off"
         android:textSize="@dimen/text_big"
         app:layout_constraintTop_toBottomOf="@id/text_container"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cute_drawing"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/main_switch"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -116,13 +127,15 @@
 
     <Switch
         android:id="@+id/main_switch"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:enabled="true"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:switchMinWidth="40dp"
+        android:translationX="-15dp"
         app:layout_constraintStart_toEndOf="@id/switch_off"
         app:layout_constraintEnd_toStartOf="@id/switch_on"
         app:layout_constraintTop_toBottomOf="@id/text_container"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@id/cute_drawing"/>
 
     <TextView
         android:id="@+id/switch_on"
@@ -131,10 +144,21 @@
         android:text="@string/on"
         android:textSize="@dimen/text_big"
         app:layout_constraintTop_toBottomOf="@id/text_container"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cute_drawing"
         app:layout_constraintStart_toEndOf="@id/main_switch"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <ImageView
+        android:id="@+id/cute_drawing"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/test_drawing"
+        android:scaleType="fitXY"
+        android:visibility="visible"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
