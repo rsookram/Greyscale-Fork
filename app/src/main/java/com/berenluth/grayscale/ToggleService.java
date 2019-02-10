@@ -1,9 +1,16 @@
 package com.berenluth.grayscale;
 
 import android.annotation.TargetApi;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Build;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
+import android.util.Log;
+import android.widget.Toast;
+
+import java.util.Calendar;
 
 @TargetApi(Build.VERSION_CODES.N)
 public class ToggleService extends TileService {
@@ -25,6 +32,21 @@ public class ToggleService extends TileService {
         }
 
         Util.toggleGreyscale(this, oldState == Tile.STATE_INACTIVE);
+
+        Intent i = new Intent(getApplicationContext(), TimerReceiver.class);
+        PendingIntent sender = PendingIntent.getBroadcast(this, getQsTile().getState(), i, PendingIntent.FLAG_CANCEL_CURRENT);
+
+        //Duration in - SECONDS -
+        int duration = 5;
+
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.SECOND, duration);
+
+        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+        am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), sender);
+
+        Toast.makeText(this, "Timer setted for " + duration + " seconds", Toast.LENGTH_SHORT).show();
+        Log.d("Tile", "Timer setted for " + duration + " seconds");
     }
 
 

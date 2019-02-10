@@ -1,11 +1,16 @@
 package com.berenluth.grayscale
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.os.SystemClock
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_home.*
-import android.widget.CompoundButton
-
+import java.util.*
 
 
 class HomeActivity : AppCompatActivity() {
