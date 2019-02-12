@@ -10,8 +10,8 @@
     <string name="off">OFF</string>
     <string name="on">ON</string>
     <string name="title_default">Default</string>
-    <string name="off_description">When the default mode is OFF, the display will remain in grayscale mode until you disable it for 30 minutes from the quick settings panel.</string>
-    <string name="on_description">When the default mode is ON, the display will not be affected, but you can still turn on the grayscale temporary for 30 minutes from the quick settings panel.</string>
+    <string name="off_description">The display colours are normal\nYou can temporary enable the greyscale from the quick toggles</string>
+    <string name="on_description">The display is always greyscale\nYou can temporary disable the greyscale from the quick toggles</string>
     <string name="toggle_duration">Fast switch duration: %1$d %2$s</string>
     <string name="minutes">minutes</string>
     <string name="hours">hours</string>

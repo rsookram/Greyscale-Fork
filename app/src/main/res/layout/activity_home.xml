@@ -21,22 +21,14 @@
         android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
+        android:src="@mipmap/ic_launcher_colors"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/appname"
-        app:layout_constraintBottom_toTopOf="@id/text_container"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="40dp"
         />
 
-    <ImageView
-        android:id="@+id/icon_colors"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher_colors"
-        app:layout_constraintStart_toStartOf="@id/icon"
-        app:layout_constraintTop_toTopOf="@id/icon"
-        />
 
     <TextView
         android:id="@+id/appname"
@@ -46,8 +38,8 @@
         android:textSize="@dimen/text_big"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/icon"
-        app:layout_constraintBottom_toTopOf="@id/text_container"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="icon"
+        app:layout_constraintBottom_toBottomOf="@id/icon"/>
 
     <LinearLayout
         android:id="@+id/text_container"
@@ -57,23 +49,22 @@
         app:layout_constraintTop_toBottomOf="@id/icon"
         app:layout_constraintBottom_toTopOf="@id/main_switch"
         android:weightSum="2"
-        app:layout_constraintVertical_chainStyle="packed"
         >
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_weight="1"
-            android:layout_margin="8dp">
+            android:layout_weight="1">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/off"
                 android:textSize="@dimen/text_title"
-                android:gravity="center"
-                android:layout_gravity="center"/>
+                android:paddingStart="16dp"
+                android:textStyle="bold"
+                android:layout_gravity="start"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -81,7 +72,8 @@
                 android:text="@string/off_description"
                 android:gravity="start"
                 android:textSize="@dimen/text_medium"
-                android:padding="16dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
@@ -90,16 +82,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_weight="1"
-            android:layout_margin="8dp">
+            android:layout_weight="1">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/on"
                 android:textSize="@dimen/text_title"
-                android:gravity="center"
-                android:layout_gravity="center"/>
+                android:paddingEnd="16dp"
+                android:textStyle="bold"
+                android:layout_gravity="end"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -107,7 +99,8 @@
                 android:text="@string/on_description"
                 android:gravity="end"
                 android:textSize="@dimen/text_medium"
-                android:padding="16dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
@@ -129,23 +122,21 @@
         android:layout_height="wrap_content"
         android:text="@string/off"
         android:textSize="@dimen/text_big"
-        app:layout_constraintTop_toBottomOf="@id/text_container"
-        app:layout_constraintBottom_toTopOf="@id/cute_drawing"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/main_switch"
+        app:layout_constraintTop_toTopOf="@id/main_switch"
         app:layout_constraintEnd_toStartOf="@id/main_switch"
-        app:layout_constraintHorizontal_chainStyle="packed"
         />
 
     <Switch
         android:id="@+id/main_switch"
-        android:layout_width="70dp"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:switchMinWidth="40dp"
-        android:translationX="-15dp"
-        app:layout_constraintStart_toEndOf="@id/switch_off"
-        app:layout_constraintEnd_toStartOf="@id/switch_on"
-        app:layout_constraintTop_toBottomOf="@id/text_container"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:translationX="-10dp"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/cute_drawing"/>
 
     <TextView
@@ -154,10 +145,10 @@
         android:layout_height="wrap_content"
         android:text="@string/on"
         android:textSize="@dimen/text_big"
-        app:layout_constraintTop_toBottomOf="@id/text_container"
-        app:layout_constraintBottom_toTopOf="@id/cute_drawing"
-        app:layout_constraintStart_toEndOf="@id/main_switch"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/main_switch"
+        app:layout_constraintTop_toTopOf="@id/main_switch"
+        app:layout_constraintStart_toEndOf="@id/main_switch"/>
 
     <ImageView
         android:id="@+id/cute_drawing"
