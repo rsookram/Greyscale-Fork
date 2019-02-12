@@ -10,14 +10,15 @@
     <string name="off">OFF</string>
     <string name="on">ON</string>
     <string name="title_default">Default</string>
-    <string name="off_description">The display colours are normal\nYou can temporary enable the greyscale from the quick toggles</string>
-    <string name="on_description">The display is always greyscale\nYou can temporary disable the greyscale from the quick toggles</string>
-    <string name="toggle_duration">Fast switch duration: %1$d %2$s</string>
+    <string name="off_description">Normal display mode\nUse quick toggle to temporarily enable greyscale mode</string>
+    <string name="on_description">Greyscale display mode\nUse quick toggle to temporarily enable normal mode</string>
+    <string name="toggle_duration">Quick toggle timer: %1$d %2$s</string>
     <string name="minutes">minutes</string>
     <string name="hours">hours</string>
-    <string name="toggle_explanation">When you press the greyscale toggle in your quick settings, you\'ll enable/disable the grayscale mode by the selected amount of time</string>
+    <string name="toggle_explanation">By pressing the toggle in your notification panel, you\'ll enable/disable the grayscale mode by the selected amount of time</string>
     <string name="app_info">
-        This app has been made by Fabio Rosada, all the arts are made by Natalia Petliak.\n\nThe code is open source and you can find it on github at this link https://github.com/BerenLuth/Greyscale\nIt\'s a fork of Grayscale app made by Fei-ke and you can find his original source code at this link https://github.com/fei-ke/Greyscale\n\n</string>
+        This app has been made by Fabio Rosada and all the arts were made by Natalia Petliak.\n\nYou can find the source code on GitHub https://github.com/BerenLuth/Greyscale\n\nThis app is a fork of Grayscale app made by Fei-ke, you can find code at this link https://github.com/fei-ke/Greyscale</string>
     <string name="save">Save</string>
     <string name="preferences_saved">Preferences saved</string>
+    <string name="quik_toggles_help"><br>Quick toggles</br> are placed on the top of the notification panel.\nUsually there\'s a button to edit them, there you\'ll be able to find and add the greyscale toggle.</string>
 </resources>

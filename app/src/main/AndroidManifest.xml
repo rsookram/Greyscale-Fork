@@ -13,11 +13,6 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
 
         <service
             android:name=".ToggleService"
@@ -31,10 +26,10 @@
 
         <activity
             android:name=".HomeActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -42,7 +37,7 @@
         <receiver android:name=".TimerReceiver" />
 
         <activity android:name=".SettingsActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
