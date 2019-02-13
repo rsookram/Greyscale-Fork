@@ -21,4 +21,5 @@
     <string name="save">Save</string>
     <string name="preferences_saved">Preferences saved</string>
     <string name="quik_toggles_help"><br>Quick toggles</br> are placed on the top of the notification panel.\nUsually there\'s a button to edit them, there you\'ll be able to find and add the greyscale toggle.</string>
+    <string name="stop">Stop</string>
 </resources>

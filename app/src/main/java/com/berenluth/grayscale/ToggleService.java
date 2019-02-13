@@ -35,12 +35,15 @@ public class ToggleService extends TileService {
             setState(Tile.STATE_ACTIVE);
         }
 
+        SharedPreferences pref = getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE);
+
+        //If the current state is different from the default state, it means that a timer is running
+        boolean isTimerSet = (pref.getBoolean(UtilValues.DEFAULT_MODE, false) != Util.isGreyscaleEnable(this));
+
         Util.toggleGreyscale(this, oldState == Tile.STATE_INACTIVE);
 
         Intent i = new Intent(getApplicationContext(), TimerReceiver.class);
         PendingIntent sender = PendingIntent.getBroadcast(this, getQsTile().getState(), i, PendingIntent.FLAG_CANCEL_CURRENT);
-
-        SharedPreferences pref = getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE);
         duration = Util.intToMinutes(pref.getInt(UtilValues.TOGGLE_DURATION, 1));
 
         Calendar cal = Calendar.getInstance();
@@ -49,8 +52,13 @@ public class ToggleService extends TileService {
         AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
         am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), sender);
 
-        Toast.makeText(this, "Timer setted for " + duration + " minutes", Toast.LENGTH_SHORT).show();
-        Log.d("Tile", "Timer setted for " + UtilValues.DURATION + " seconds");
+        if(isTimerSet){
+            Toast.makeText(this, "Timer deleted" , Toast.LENGTH_SHORT).show();
+            Log.d("Tile", "A timer was already running");
+        } else {
+            Toast.makeText(this, "Timer set for " + duration + " minutes", Toast.LENGTH_SHORT).show();
+            Log.d("Tile", "Timer set for " + UtilValues.DURATION + " seconds");
+        }
     }
 
 
