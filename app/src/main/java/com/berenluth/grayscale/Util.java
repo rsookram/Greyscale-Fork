@@ -74,7 +74,7 @@ public class Util {
         Secure.putInt(contentResolver, DISPLAY_DALTONIZER, greyscale ? 0 : -1);
     }
 
-    public static int intToMinutes(int x){
+    public static int codeToMinutes(int x){
         switch (x){
             case 0:
                 return 15;
@@ -93,7 +93,7 @@ public class Util {
         }
     }
 
-    public static int intToTime(int x){
+    public static int codeToTime(int x){
         switch (x){
             case 0:
                 return 15;
@@ -110,5 +110,12 @@ public class Util {
             default:
                 return 30;
         }
+    }
+
+    public static int codeToMinutesOrHours(int x){
+        if( x < 3)
+            return R.string.minutes;
+        else
+            return R.string.hours;
     }
 }

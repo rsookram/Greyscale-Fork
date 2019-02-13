@@ -29,7 +29,7 @@ class HomeActivity : AppCompatActivity() {
         main_switch.isChecked = default_mode
         animateUI(default_mode)
 
-        snackbar = Snackbar.make(main_switch, "A timer is running", Snackbar.LENGTH_INDEFINITE)
+        snackbar = Snackbar.make(main_switch, R.string.timer_is_running, Snackbar.LENGTH_INDEFINITE)
                 .setAction(R.string.stop) { _ -> run{
                     Util.toggleGreyscale(this, default_mode)
                 }}
@@ -48,7 +48,7 @@ class HomeActivity : AppCompatActivity() {
 
                     if(snackbar.isShown) {
                         snackbar.dismiss()
-                        Snackbar.make(main_switch, "Timer automatically stopped", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(main_switch, R.string.timer_auto_stopped, Snackbar.LENGTH_SHORT).show()
                     }
                 }
 

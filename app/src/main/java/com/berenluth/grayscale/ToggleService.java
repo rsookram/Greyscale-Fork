@@ -44,7 +44,9 @@ public class ToggleService extends TileService {
 
         Intent i = new Intent(getApplicationContext(), TimerReceiver.class);
         PendingIntent sender = PendingIntent.getBroadcast(this, getQsTile().getState(), i, PendingIntent.FLAG_CANCEL_CURRENT);
-        duration = Util.intToMinutes(pref.getInt(UtilValues.TOGGLE_DURATION, 1));
+        int duration_code = pref.getInt(UtilValues.TOGGLE_DURATION, 1);
+        duration = Util.codeToMinutes(duration_code);
+
 
         Calendar cal = Calendar.getInstance();
         cal.add(UtilValues.TIME_UNIT, duration);
@@ -53,10 +55,12 @@ public class ToggleService extends TileService {
         am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), sender);
 
         if(isTimerSet){
-            Toast.makeText(this, "Timer deleted" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.timer_deleted , Toast.LENGTH_SHORT).show();
             Log.d("Tile", "A timer was already running");
         } else {
-            Toast.makeText(this, "Timer set for " + duration + " minutes", Toast.LENGTH_SHORT).show();
+            String message = String.format(getString(R.string.timer_activated),
+                    Util.codeToTime(duration_code), getString(Util.codeToMinutesOrHours(duration_code)));
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
             Log.d("Tile", "Timer set for " + UtilValues.DURATION + " seconds");
         }
     }

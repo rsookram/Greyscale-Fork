@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Greyscale</string>
+    <string name="app_name">Greyscale+</string>
     <string name="tips_title">Need Permission!</string>
     <string name="tips_ok">OK</string>
     <string name="tips_copy">COPY</string>
@@ -21,5 +21,9 @@
     <string name="save">Save</string>
     <string name="preferences_saved">Preferences saved</string>
     <string name="quik_toggles_help"><br>Quick toggles</br> are placed on the top of the notification panel.\nUsually there\'s a button to edit them, there you\'ll be able to find and add the greyscale toggle.</string>
-    <string name="stop">Stop</string>
+    <string name="stop">Stop now</string>
+    <string name="timer_auto_stopped">Timer automatically stopped</string>
+    <string name="timer_is_running">A timer is running</string>
+    <string name="timer_deleted">Timer deleted</string>
+    <string name="timer_activated">Timer set for %1$d %2$s</string>
 </resources>

@@ -45,7 +45,7 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         var unit = getString(R.string.minutes)
         if(p1 > 2)
             unit = getString(R.string.hours)
-        var value = Util.intToTime(p1)
+        var value = Util.codeToTime(p1)
 
         text_toggle_duration.text = String.format(getString(R.string.toggle_duration), value, unit)
 
