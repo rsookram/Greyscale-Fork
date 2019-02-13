@@ -125,6 +125,7 @@
         android:translationX="-10dp"
         android:scaleX="1.2"
         android:scaleY="1.2"
+        android:checked="false"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/cute_drawing"/>

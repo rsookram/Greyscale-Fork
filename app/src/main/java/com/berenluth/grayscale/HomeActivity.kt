@@ -16,18 +16,20 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        if (Util.hasPermission(this)) {
-            //Read the user saved preference
-            val prefs = this.getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE)
-            default_mode = prefs.getBoolean(UtilValues.DEFAULT_MODE, false)
+        //Read the user saved preference
+        val prefs = this.getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE)
+        default_mode = prefs.getBoolean(UtilValues.DEFAULT_MODE, false)
 
-            //Update the switch and other views with the correct default mode
-            main_switch.isChecked = default_mode
-            animateUI(default_mode)
+        Log.d("HomeActivity", "Default mode = $default_mode")
 
-            //Call this function when the switch is pressed
-            main_switch.setOnCheckedChangeListener { _, s ->
-                run {
+        //Update the switch and other views with the correct default mode
+        main_switch.isChecked = default_mode
+        animateUI(default_mode)
+
+        //Call this function when the switch is pressed
+        main_switch.setOnCheckedChangeListener { _, s ->
+            run {
+                if (Util.hasPermission(this)) {
                     Util.toggleGreyscale(this, s)
                     animateUI(s)
 
@@ -35,25 +37,27 @@ class HomeActivity : AppCompatActivity() {
                     prefs.edit().putBoolean(UtilValues.DEFAULT_MODE, s).apply()
                     Log.d("HomeActivity", "Default_mode changed in: $s")
                 }
-            }
 
-            settings_button.setOnClickListener { _ ->
-                run {
-                    val i = Intent(this, SettingsActivity::class.java)
-                    startActivity(i)
+                //Show dialog fragment if app doesn't have permissions
+                else {
+                    main_switch.isChecked = !s  //Bring the switch to the previous state
+
+                    val dialog = Util.createTipsDialog(this)
+                    dialog.setOnDismissListener {
+                    }
+                    dialog.show()
                 }
             }
-
         }
 
-        //Show dialog fragment if app doesn't have permissions
-        else {
-            val dialog = Util.createTipsDialog(this)
-            dialog.setOnDismissListener {
-                finish()
+        settings_button.setOnClickListener { _ ->
+            run {
+                val i = Intent(this, SettingsActivity::class.java)
+                startActivity(i)
             }
-            dialog.show()
         }
+
+
     }
 
 
