@@ -92,7 +92,8 @@
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:text="@string/toggle_duration"
-                        android:textSize="@dimen/text_title" />
+                        android:textSize="@dimen/text_title"
+                        android:lines="1"/>
 
                     <TextView
                         android:id="@+id/text_toggle_explanation"

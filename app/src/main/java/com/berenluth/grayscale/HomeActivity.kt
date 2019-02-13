@@ -81,14 +81,16 @@ class HomeActivity : AppCompatActivity() {
 
     fun animateUI(gray: Boolean) {
         val animationScale = 175L
+        val scaleFactor = 0.8f
+
         if(gray) {
             switch_on.animate().scaleX(1f).scaleY(1f).duration = animationScale
-            switch_off.animate().scaleX(0.7f).scaleY(0.7f).duration = animationScale
+            switch_off.animate().scaleX(scaleFactor).scaleY(scaleFactor).duration = animationScale
 
         }
         else {
             switch_off.animate().scaleX(1f).scaleY(1f).duration = animationScale
-            switch_on.animate().scaleX(0.7f).scaleY(0.7f).duration = animationScale
+            switch_on.animate().scaleX(scaleFactor).scaleY(scaleFactor).duration = animationScale
         }
     }
 }
