@@ -13,8 +13,9 @@ If you phone is rooted it's actually pretty simple, you just have to press the *
 #### ADB
 ADB (Android Debug Bridge) is a tool that everyone can download, and it allows you to send special commands from you computer to your phone (usually via USB cable).
 
-Here's the official page [Android Debug Bridge](https://developer.android.com/studio/command-line/adb)
-And Here's a complete guide to install it on MacOS, Windows or Linux [XDA - How to install adb](https://www.xda-developers.com/install-adb-windows-macos-linux/)
+Here's the official page of [Android Debug Bridge](https://developer.android.com/studio/command-line/adb)
+
+And here's a complete guide to install it on MacOS, Windows or Linux: [XDA - How to install adb](https://www.xda-developers.com/install-adb-windows-macos-linux/)
 
 Once you have adb correctly installed in your computer you're almost done, what you have to do now is connect your phone to your computer, open the Terminal and simply paste this text and hit enter
 
