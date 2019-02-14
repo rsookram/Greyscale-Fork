@@ -2,8 +2,7 @@
 In order to be able to use this app properly, you should grant special permission via **ADB** or **ROOT**.
 
 ## Why?
-Because to avoid battery drain making this app constantly running in the background, we preferred to use a simple option that is already in all Android devices, hidden in 
-```Settings > Developer Option > Simulate color space```, however, this is really uncomfortable to reach every time you want to switch between colors and greyscale.
+Instead of the app constantly running in the background and drain the battery, we prefer to use a simple option that is already in all Android devices, hidden in ```Settings > Developer Option > Simulate color space```, however, this is really uncomfortable if you want to switch between normal and greyscale many times.
 Since this function is part of the Android OS and not a normal option available to developers, it requires special permission.
 
 
@@ -21,4 +20,4 @@ Once you have adb correctly installed in your computer you're almost done, what 
 
     adb -d shell pm grant com.berenluth.grayscale android.permission.WRITE_SECURE_SETTINGS
 
-You're done, enjoy Greyscale!
+You're done, enjoy Greyscale+!
