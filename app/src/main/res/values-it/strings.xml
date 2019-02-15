@@ -23,4 +23,5 @@
     <string name="app_info">Questa applicazione è stata creata da Fabio Rosada e le grafiche da Natalia Petliak.\n\nPuoi trovare il codice sorgente su Github https://github.com/BerenLuth/Greyscale\n\nQuesto progetto è un fork dell\'applicazione Greyscale fatta da Fei-ke, puoi trovare il codice sorgente a questo link https://github.com/fei-ke/Greyscale</string>
     <string name="on_description">Modalità Scala di Grigi\nUtilizza il quick toggle per attivare temporaneamente la modalità Normale</string>
     <string name="off_description">Modalità Normale\nUtilizza il quick toggle per attivare temporaneamente la modalità Scala di Grigi</string>
+    <string name="need_help">Serve aiuto?</string>
 </resources>

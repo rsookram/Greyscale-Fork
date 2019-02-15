@@ -18,8 +18,8 @@
         <item name="buttonBarNeutralButtonStyle">@style/Widget.AppCompat.Button.Borderless.Colored</item>
     </style>
 
-    <style name="AppTheme.Button" parent="@style/Widget.AppCompat.Button.Borderless">
-
+    <style name="AppTheme.Button" parent="@style/Widget.MaterialComponents.FloatingActionButton">
+        <item name="cornerRadius">30dp</item>
     </style>
 
 </resources>

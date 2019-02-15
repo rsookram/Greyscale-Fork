@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Greyscale+</string>
+    <string name="guide_website" translatable="false">https://github.com/BerenLuth/Greyscale/blob/master/user_guides/en_guide.md</string>
     <string name="tips_title">Need Permission!</string>
     <string name="tips_ok">OK</string>
     <string name="tips_copy">COPY</string>
@@ -25,4 +26,5 @@
     <string name="timer_is_running">A timer is running</string>
     <string name="timer_activated">Timer set for %1$d %2$s</string>
     <string name="timer_deleted">Timer deleted</string>
+    <string name="need_help">Need help?</string>
 </resources>

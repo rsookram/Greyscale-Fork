@@ -2,6 +2,7 @@ package com.berenluth.grayscale
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -68,6 +69,13 @@ class HomeActivity : AppCompatActivity() {
             run {
                 val i = Intent(this, SettingsActivity::class.java)
                 startActivity(i)
+            }
+        }
+
+        need_help.setOnClickListener { _ ->
+            run {
+                val browserIntent = Intent("android.intent.action.VIEW", Uri.parse(getString(R.string.guide_website)))
+                startActivity(browserIntent)
             }
         }
     }
