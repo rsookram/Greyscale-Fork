@@ -17,7 +17,7 @@
     <string name="minutes">minutes</string>
     <string name="hours">hours</string>
     <string name="toggle_explanation">By pressing the toggle in your notification panel, you\'ll enable/disable the greyscale mode by the selected amount of time</string>
-    <string name="app_info">Application made by Fabio Rosada, artwork by Natalia Petliak.   You can find the source code on GitHub https://github.com/BerenLuth/Greyscale  This app is a fork of Greyscale app made by Fei-ke, you can find the code here https://github.com/fei-ke/Greyscale</string>
+    <string name="app_info">Application made by Fabio Rosada, artwork by Natalia Petliak.\n\nYou can find the source code on GitHub https://github.com/BerenLuth/Greyscale\n\nThis app is a fork of Greyscale app made by Fei-ke, you can find the code here https://github.com/fei-ke/Greyscale</string>
     <string name="save">Save</string>
     <string name="preferences_saved">Preferences saved</string>
     <string name="quik_toggles_help">Quick toggle switches are placed at the top of the notification panel.\nUsually there\'s a button to edit them, you can use it to add and find the greyscale toggle</string>

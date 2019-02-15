@@ -24,5 +24,5 @@
     <string name="on_description">Modalità Scala di Grigi\nUtilizza il quick toggle per attivare temporaneamente la modalità Normale</string>
     <string name="off_description">Modalità Normale\nUtilizza il quick toggle per attivare temporaneamente la modalità Scala di Grigi</string>
     <string name="need_help">Serve aiuto?</string>
-    <string name="guide">https://github.com/BerenLuth/Greyscale/blob/master/user_guides/it_guide.md</string>
+    <string name="guide_website">https://github.com/BerenLuth/Greyscale/blob/master/user_guides/it_guide.md</string>
 </resources>
