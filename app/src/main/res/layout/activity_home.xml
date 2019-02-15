@@ -160,7 +160,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:text="@string/need_help"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/help_red"/>
+        android:backgroundTint="@color/help_red"
+        android:translationY="100dp"
+        android:visibility="gone"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

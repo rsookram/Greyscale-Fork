@@ -5,6 +5,9 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.BounceInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_home.*
@@ -84,6 +87,13 @@ class HomeActivity : AppCompatActivity() {
         super.onResume()
         if( default_mode != Util.isGreyscaleEnable(this) ){
                 snackbar.show()
+        }
+
+
+        if (!Util.hasPermission(this)){
+            need_help.visibility = View.VISIBLE
+            val interpolator = AccelerateDecelerateInterpolator()
+            need_help.animate().translationY(0f).duration = 300L
         }
     }
 
