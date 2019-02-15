@@ -6,24 +6,23 @@
     <string name="copy_done">Copy Success</string>
     <string name="tips">Before using this application, you have to grant permission with adb tools, copy the command below and execute it on PC:\n\n%1$s\n\nAlternatively you can use root to grant permission.</string>
     <string name="root_failure">root permission not granted</string>
-    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
-    <string name="off">OFF</string>
-    <string name="on">ON</string>
+    <string name="lorem_ipsum" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+    <string name="off" translatable="false">OFF</string>
+    <string name="on" translatable="false">ON</string>
     <string name="title_default">Default</string>
     <string name="off_description">Normal display mode\nUse quick toggle to temporarily enable greyscale mode</string>
     <string name="on_description">Greyscale display mode\nUse quick toggle to temporarily enable normal mode</string>
     <string name="toggle_duration">Quick toggle timer: %1$d %2$s</string>
     <string name="minutes">minutes</string>
     <string name="hours">hours</string>
-    <string name="toggle_explanation">By pressing the toggle in your notification panel, you\'ll enable/disable the grayscale mode by the selected amount of time</string>
-    <string name="app_info">
-        Application made by Fabio Rosada, artwork by Natalia Petliak. \n\nYou can find the source code on GitHub https://github.com/BerenLuth/Greyscale\n\nThis app is a fork of Greyscale app made by Fei-ke, you can find the code here https://github.com/fei-ke/Greyscale</string>
+    <string name="toggle_explanation">By pressing the toggle in your notification panel, you\'ll enable/disable the greyscale mode by the selected amount of time</string>
+    <string name="app_info">Application made by Fabio Rosada, artwork by Natalia Petliak.   You can find the source code on GitHub https://github.com/BerenLuth/Greyscale  This app is a fork of Greyscale app made by Fei-ke, you can find the code here https://github.com/fei-ke/Greyscale</string>
     <string name="save">Save</string>
     <string name="preferences_saved">Preferences saved</string>
-    <string name="quik_toggles_help">Quick toggle switches are placed at the top of the notification panel.\nUsually there\'s a button to edit them, you can use it to add and find the grayscale toggle</string>
+    <string name="quik_toggles_help">Quick toggle switches are placed at the top of the notification panel.\nUsually there\'s a button to edit them, you can use it to add and find the greyscale toggle</string>
     <string name="stop">Stop now</string>
     <string name="timer_auto_stopped">Timer automatically stopped</string>
     <string name="timer_is_running">A timer is running</string>
-    <string name="timer_deleted">Timer deleted</string>
     <string name="timer_activated">Timer set for %1$d %2$s</string>
+    <string name="timer_deleted">Timer deleted</string>
 </resources>

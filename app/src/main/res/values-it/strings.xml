@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Greyscale+</string>
+    <string name="tips_title">Permesso richiesto!</string>
+    <string name="tips_ok">Ok</string>
+    <string name="tips_copy">Copia</string>
+    <string name="copy_done">Testo copiato</string>
+    <string name="root_failure">Impossibile garantire il permesso tramite root</string>
+    <string name="title_default">Predefinito</string>
+    <string name="toggle_duration">Timer quick toggle: %1$d %2$s</string>
+    <string name="minutes">minuti</string>
+    <string name="hours">ore</string>
+    <string name="toggle_explanation">Premendo il toggle nel pannello delle notifiche attiverai/disattiverai la modalità scala di grigi per la quantità di tempo selezionata</string>
+    <string name="save">Salva</string>
+    <string name="preferences_saved">Preferenze salvate</string>
+    <string name="stop">Ferma ora</string>
+    <string name="timer_auto_stopped">Timer fermato automaticamente</string>
+    <string name="timer_is_running">Un timer è già in esecuzione</string>
+    <string name="timer_activated">Timer impostato per %1$d %2$s</string>
+    <string name="timer_deleted">Timer cancellato</string>
+    <string name="tips">Prima di usare questa applicazione devi garantire il permesso tramite lo strumento adb, copia il comando seguente ed eseguilo sul tuo PC:\n\n%1$s\n\nOppure puoi usare il root per abilitare il permesso.</string>
+    <string name="quik_toggles_help">I quick toggle sono le scorciatoie situate nel pannello delle notifiche. Di solito c\'è un bottone per modificarli, puoi usarlo per aggiungere il toggle di questa app alla tua lista.</string>
+    <string name="app_info">Questa applicazione è stata creata da Fabio Rosada e le grafiche da Natalia Petliak.\n\nPuoi trovare il codice sorgente su Github https://github.com/BerenLuth/Greyscale\n\nQuesto progetto è un fork dell\'applicazione Greyscale fatta da Fei-ke, puoi trovare il codice sorgente a questo link https://github.com/fei-ke/Greyscale</string>
+    <string name="on_description">Modalità Scala di Grigi\nUtilizza il quick toggle per attivare temporaneamente la modalità Normale</string>
+    <string name="off_description">Modalità Normale\nUtilizza il quick toggle per attivare temporaneamente la modalità Scala di Grigi</string>
+</resources>
