@@ -1,11 +1,14 @@
 package com.berenluth.grayscale
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.SeekBar
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
@@ -26,6 +29,13 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         seekBar.setOnSeekBarChangeListener(this)
 
         onProgressChanged(null, x, false)
+
+        button_user_guide.setOnClickListener { _ ->
+            run {
+                val browserIntent = Intent("android.intent.action.VIEW", Uri.parse(getString(R.string.guide_website)))
+                startActivity(browserIntent)
+            }
+        }
     }
 
     private fun updatePreferences(view: View) {

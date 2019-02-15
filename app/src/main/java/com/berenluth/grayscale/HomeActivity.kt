@@ -92,7 +92,6 @@ class HomeActivity : AppCompatActivity() {
 
         if (!Util.hasPermission(this)){
             need_help.visibility = View.VISIBLE
-            val interpolator = AccelerateDecelerateInterpolator()
             need_help.animate().translationY(0f).duration = 300L
         }
     }
