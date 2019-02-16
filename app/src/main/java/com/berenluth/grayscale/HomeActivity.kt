@@ -85,7 +85,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        if( default_mode != Util.isGreyscaleEnable(this) ){
+        if( Util.hasPermission(this) && default_mode != Util.isGreyscaleEnable(this) ){
                 snackbar.show()
         }
 
