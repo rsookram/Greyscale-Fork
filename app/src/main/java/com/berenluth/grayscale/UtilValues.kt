@@ -13,5 +13,6 @@ class UtilValues{
         const val GENERAL_PREFERENCES = "general_preferences"
         const val DEFAULT_MODE = "default_mode"
         const val TOGGLE_DURATION = "toggle_duration"
+        const val TIMER_END = "timer_end"
     }
 }

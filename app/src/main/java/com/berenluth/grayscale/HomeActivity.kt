@@ -6,11 +6,11 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.BounceInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_home.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class HomeActivity : AppCompatActivity() {
@@ -33,7 +33,10 @@ class HomeActivity : AppCompatActivity() {
         main_switch.isChecked = default_mode
         animateUI(default_mode)
 
-        snackbar = Snackbar.make(main_switch, R.string.timer_is_running, Snackbar.LENGTH_INDEFINITE)
+        val end = prefs.getLong(UtilValues.TIMER_END, 0L)
+        val timerMessage = String.format(getString(R.string.timer_is_running), getTimerEnd(end))
+
+        snackbar = Snackbar.make(main_switch, timerMessage, Snackbar.LENGTH_INDEFINITE)
                 .setAction(R.string.stop) { _ -> run{
                     Util.toggleGreyscale(this, default_mode)
                 }}
@@ -109,5 +112,13 @@ class HomeActivity : AppCompatActivity() {
             switch_off.animate().scaleX(1f).scaleY(1f).duration = animationScale
             switch_on.animate().scaleX(scaleFactor).scaleY(scaleFactor).duration = animationScale
         }
+    }
+
+    fun getTimerEnd(end: Long) : String{
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = end
+
+        val format1 = SimpleDateFormat("HH:mm")
+        return format1.format(calendar.time)
     }
 }

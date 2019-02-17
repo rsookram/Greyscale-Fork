@@ -15,7 +15,7 @@
     <string name="preferences_saved">Preferenze salvate</string>
     <string name="stop">Ferma ora</string>
     <string name="timer_auto_stopped">Timer fermato automaticamente</string>
-    <string name="timer_is_running">Un timer è già in esecuzione</string>
+    <string name="timer_is_running">Un timer è già in esecuzione fino alle %1$s</string>
     <string name="timer_activated">Timer impostato per %1$d %2$s</string>
     <string name="timer_deleted">Timer cancellato</string>
     <string name="tips">Prima di usare questa applicazione devi garantire il permesso tramite lo strumento adb, copia il comando seguente ed eseguilo sul tuo PC:\n\n%1$s\n\nOppure puoi usare il root per abilitare il permesso.</string>

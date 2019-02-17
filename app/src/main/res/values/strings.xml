@@ -23,7 +23,7 @@
     <string name="quik_toggles_help">Quick toggle switches are placed at the top of the notification panel.\nUsually there\'s a button to edit them, you can use it to add and find the greyscale toggle</string>
     <string name="stop">Stop now</string>
     <string name="timer_auto_stopped">Timer automatically stopped</string>
-    <string name="timer_is_running">A timer is running</string>
+    <string name="timer_is_running">A timer is running until %1$s</string>
     <string name="timer_activated">Timer set for %1$d %2$s</string>
     <string name="timer_deleted">Timer deleted</string>
     <string name="need_help">Need help?</string>

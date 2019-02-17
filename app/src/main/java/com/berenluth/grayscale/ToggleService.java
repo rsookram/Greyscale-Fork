@@ -62,6 +62,7 @@ public class ToggleService extends TileService {
                     Util.codeToTime(duration_code), getString(Util.codeToMinutesOrHours(duration_code)));
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
             Log.d("Tile", "Timer set for " + UtilValues.DURATION + " seconds");
+            pref.edit().putLong(UtilValues.TIMER_END, cal.getTimeInMillis()).apply();
         }
     }
 
