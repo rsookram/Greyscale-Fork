@@ -1,23 +1,22 @@
-# User Guide
-In order to be able to use this app properly, you should grant special permission via **ADB** or **ROOT**.
+# Guida Utente
+Per far funzionare questa applicazione è necessario abilitare un permesso speciale tramite **ADB** o **ROOT**
 
-## Why?
-Instead of the app constantly running in the background and drain the battery, we prefer to use a simple option that is already in all Android devices, hidden in ```Settings > Developer Option > Simulate color space```, however, this is really uncomfortable if you want to switch between normal and greyscale many times.
-Since this function is part of the Android OS and not a normal option available to developers, it requires special permission.
+## Perché?
+Al posto di mantenere l'app costantemente in background e consumare batteria, preferiamo usare una seplice opzione che è presente su tutti i dispositivi Android, nascosta in ```Impostazioni > Opzioni sviluppatori > Simula spazio colore```, purtroppo però è molto scomodo se vuoi passare spesso dalla modalità Normale a quella in Scala di Grigi.
+Dato che questa funzione fa parte del del sistema operativo Android e non è un'opzione normalmente disponibie per gli sviluppatori, richiede un permesso speciale.
 
-
-## How?
+## Come?
 #### Root
-If your phone is rooted it's actually pretty simple, you just have to press the **root** button that will appear in the popup when you try to enable the greyscale.
+Se il tuo dispositivo è stato rootato, è molto semplice, devi semplicemente premere il tasto **root** presente sulla finestra che appare quando provi ad abilitare la scala di grigi.
 #### ADB
-ADB (Android Debug Bridge) is a tool that everyone can download, and it allows you to send special commands from your computer to your phone (usually via USB cable).
+ADB (Android Debug Bridge) è uno strumento che chiunque può scaricare, permette di mandare dei comandi speciali dal tuo computer al tuo telefono (di soluto tramite cavo USB).
 
-Here's the official page of [Android Debug Bridge](https://developer.android.com/studio/command-line/adb)
+Qui puoi trovare la pagina ufficiale di [Android Debug Bridge](https://developer.android.com/studio/command-line/adb)
 
-And here's a complete guide to installing it on MacOS, Windows or Linux: [XDA - How to install adb](https://www.xda-developers.com/install-adb-windows-macos-linux/)
+E qui puoi trovare una guida completa su come installarlo su MacOS, Windows o Linux: [XDA - How to install adb](https://www.xda-developers.com/install-adb-windows-macos-linux/).
 
-Once you have adb correctly installed in your computer you're almost done, what you have to do now is connect your phone to your computer, open the Terminal and simply paste this text and hit enter
+Una volta che hai installato correttamente ADB sul tuo computer, hai quasi finito, ti basterà connettere il tuo smartphone al tuo computer, aprire il terminale e infine incollare questa stringa e premere invio 
 
     adb -d shell pm grant com.berenluth.grayscale android.permission.WRITE_SECURE_SETTINGS
 
-You're done, enjoy Greyscale+!
+Perfetto! Sei pronto ad utilizzare Greyscale+!
