@@ -2,7 +2,7 @@
 Per far funzionare questa applicazione è necessario abilitare un permesso speciale tramite **ADB** o **ROOT**
 
 ## Perché?
-Al posto di mantenere l'app costantemente in background e consumare batteria, preferiamo usare una seplice opzione che è presente su tutti i dispositivi Android, nascosta in ```Impostazioni > Opzioni sviluppatori > Simula spazio colore```, purtroppo però è molto scomodo se vuoi passare spesso dalla modalità Normale a quella in Scala di Grigi.
+Al posto di mantenere l'app costantemente in background e consumare batteria, preferiamo usare una seplice opzione che è presente su tutti i dispositivi Android, nascosta in ```Impostazioni > Opzioni sviluppatori > Simula spazio colore```, purtroppo però è molto scomodo se vuoi passare spesso dalla modalità Normale a quella in Scala di Grigi.\
 Dato che questa funzione fa parte del del sistema operativo Android e non è un'opzione normalmente disponibie per gli sviluppatori, richiede un permesso speciale.
 
 ## Come?
