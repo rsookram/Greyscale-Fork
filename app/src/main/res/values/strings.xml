@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Greyscale+</string>
+    <string name="app_name">Grayscale+</string>
     <string name="guide_website">https://github.com/BerenLuth/Greyscale/blob/master/user_guides/en_guide.md</string>
     <string name="tips_title">Need Permission!</string>
     <string name="tips_ok">OK</string>
@@ -11,12 +11,12 @@
     <string name="off" translatable="false">OFF</string>
     <string name="on" translatable="false">ON</string>
     <string name="title_default">Default</string>
-    <string name="off_description">Normal display mode\nUse quick toggle to temporarily enable greyscale mode</string>
-    <string name="on_description">Greyscale display mode\nUse quick toggle to temporarily enable normal mode</string>
+    <string name="off_description">Normal display mode\nUse quick toggle to temporarily enable grayscale mode</string>
+    <string name="on_description">Grayscale display mode\nUse quick toggle to temporarily enable normal mode</string>
     <string name="toggle_duration">Quick toggle timer: %1$d %2$s</string>
     <string name="minutes">minutes</string>
     <string name="hours">hours</string>
-    <string name="toggle_explanation">By pressing the toggle in your notification panel, you\'ll enable/disable the greyscale mode by the selected amount of time</string>
+    <string name="toggle_explanation">By pressing the toggle in your notification panel, you\'ll enable/disable the grayscale mode by the selected amount of time</string>
     <string name="app_info">Application made by Fabio Rosada, artwork by Natalia Petliak.\n\nYou can find the source code on GitHub https://github.com/BerenLuth/Greyscale\n\nThis app is a fork of Greyscale app made by Fei-ke, you can find the code here https://github.com/fei-ke/Greyscale</string>
     <string name="save">Save</string>
     <string name="preferences_saved">Preferences saved</string>
@@ -28,4 +28,6 @@
     <string name="timer_deleted">Timer deleted</string>
     <string name="need_help">Need help?</string>
     <string name="user_guide">User guide</string>
+    <string name="night_mode">Automatic Schedule</string>
+    <string name="night_mode_explanation">You can select a time window in which grayscale turn on automatically.</string>
 </resources>

@@ -10,6 +10,12 @@ import android.widget.SeekBar
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_settings.*
+import android.widget.TimePicker
+import android.app.TimePickerDialog
+import android.util.Log
+import android.widget.EditText
+import java.util.*
+
 
 class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
@@ -19,7 +25,7 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         setContentView(R.layout.activity_settings)
 
         arrow_back.setOnClickListener { finish() }
-        button_confirm.setOnClickListener { view -> updatePreferences(view) }
+        //button_confirm.setOnClickListener { view -> updatePreferences(view) }
 
 
         //TODO set seekbar from preferences
@@ -36,6 +42,38 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                 startActivity(browserIntent)
             }
         }
+
+        night_mode_time_2.setOnClickListener { _-> timeScheduleListener(night_mode_time_2) }
+        night_mode_time_4.setOnClickListener { _-> timeScheduleListener(night_mode_time_4) }
+
+        /*night_mode_time_2.setOnClickListener { _ ->
+
+            run {
+                val c = Calendar.getInstance()
+                val selectedTime = night_mode_time_2.text.split(":")
+                Log.d("Settings", selectedTime.toString())
+                val hh = selectedTime[0].toInt()
+                val mm = selectedTime[1].toInt()
+
+                val timePickerDialog = TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
+                    //night_mode_time_2.setText( "" + hourOfDay + ":" + minute)
+                    updateTimeSchedule(night_mode_time_2, hourOfDay, minute)
+                },hh,mm,true)
+                timePickerDialog.show()
+            }*/
+
+
+    }
+
+    private fun updateTimeSchedule(){
+        var selectedTime = night_mode_time_2.text.split(":")
+        val startHH = selectedTime[0].toInt()
+        val startMM = selectedTime[1].toInt()
+        selectedTime = night_mode_time_4.text.split(":")
+        val endHH = selectedTime[0].toInt()
+        val endMM = selectedTime[1].toInt()
+
+
     }
 
     private fun updatePreferences(view: View) {
@@ -48,6 +86,8 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
     }
 
     override fun onStopTrackingTouch(p0: SeekBar?) {
+        if(p0 != null)
+            updatePreferences(p0 as View)
     }
 
 
@@ -59,5 +99,21 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
         text_toggle_duration.text = String.format(getString(R.string.toggle_duration), value, unit)
 
+    }
+
+    private fun timeScheduleListener(textView: EditText){
+        val selectedTime = textView.text.split(":")
+        Log.d("Settings", selectedTime.toString())
+        val hh = selectedTime[0].toInt()
+        val mm = selectedTime[1].toInt()
+
+        val timePickerDialog = TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
+            //night_mode_time_2.setText( "" + hourOfDay + ":" + minute)
+            val textString = hourOfDay.toString().padStart(2, '0') + ":" + minute.toString().padStart(2, '0')
+            textView.setText(textString)
+            updateTimeSchedule()
+        },hh,mm,true)
+
+        timePickerDialog.show()
     }
 }
