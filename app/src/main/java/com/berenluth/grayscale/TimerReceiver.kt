@@ -49,16 +49,19 @@ class TimerReceiver : BroadcastReceiver(){
                 Log.d(TAG, "Action::" + action)
 
                 val currentMode = Util.isGreyscaleEnable(p0)
-
                 Log.d(TAG, "Default mode: $defaultMode, current mode $currentMode")
-                if (defaultMode != currentMode) {
+
+                val correctState = defaultMode || (nightMode && inTimeWindow)
+
+                if (correctState != currentMode) {
                     Util.toggleGreyscale(p0, defaultMode)
 
-                    Toast.makeText(p0, "Bringing greyscale back to the default mode", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(p0, "Grayscale timer ended", Toast.LENGTH_SHORT).show()
                     Log.d(TAG, "Timer ended, changing mode")
                 } else {
                     Log.d(TAG, "Timer ended, we are already in the default mode")
                 }
+
             }
 
         }
