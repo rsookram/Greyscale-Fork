@@ -200,6 +200,7 @@
                         android:text="22:00"
                         android:inputType="none"
                         android:editable="false"
+                        android:focusableInTouchMode="false"
                         app:layout_constraintBaseline_toBaselineOf="@id/night_mode_time_1"
                         app:layout_constraintStart_toEndOf="@id/night_mode_time_1" />
 
@@ -219,6 +220,7 @@
                         android:text="07:00"
                         android:inputType="none"
                         android:editable="false"
+                        android:focusableInTouchMode="false"
                         app:layout_constraintBaseline_toBaselineOf="@id/night_mode_time_1"
                         app:layout_constraintStart_toEndOf="@id/night_mode_time_3" />
 

@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_settings.*
 import android.widget.TimePicker
 import android.app.TimePickerDialog
+import android.content.SharedPreferences
 import android.util.Log
 import android.widget.EditText
 import java.util.*
@@ -46,6 +47,7 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         //Set the current night mode state into the switch
         val currentNightModeState = pref.getBoolean(UtilValues.NIGHT_MODE_ENABLED, false)
         night_mode_switch.isChecked = currentNightModeState
+        loadNightModeTime(pref)
 
         //Set the switch listener that change the night mode state
         night_mode_switch.setOnCheckedChangeListener { view, s ->
@@ -130,5 +132,18 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         },hh,mm,true)
 
         timePickerDialog.show()
+    }
+
+    private fun loadNightModeTime(pref: SharedPreferences){
+        val startHH = pref.getInt(UtilValues.NIGHT_MODE_START_HH, 22)
+        val startMM = pref.getInt(UtilValues.NIGHT_MODE_START_MM, 0)
+        val endHH = pref.getInt(UtilValues.NIGHT_MODE_END_HH, 7)
+        val endMM = pref.getInt(UtilValues.NIGHT_MODE_END_MM, 0)
+
+        val startString = startHH.toString().padStart(2, '0') + ":" + startMM.toString().padStart(2, '0')
+        val endString = endHH.toString().padStart(2, '0') + ":" + endMM.toString().padStart(2, '0')
+
+        night_mode_time_2.setText(startString)
+        night_mode_time_4.setText(endString)
     }
 }
