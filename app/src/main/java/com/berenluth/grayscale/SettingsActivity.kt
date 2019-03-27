@@ -26,10 +26,7 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         setContentView(R.layout.activity_settings)
 
         arrow_back.setOnClickListener { finish() }
-        //button_confirm.setOnClickListener { view -> updatePreferences(view) }
 
-
-        //TODO set seekbar from preferences
         val pref = getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE)
         val x = pref.getInt(UtilValues.TOGGLE_DURATION, 1)
         seekBar.progress = x

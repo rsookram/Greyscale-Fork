@@ -10,8 +10,8 @@ import android.widget.Toast
  * To maintain the logic of the app, this class should -ONLY- set the mode
  * back to the default_mode value (written in preferences)
  */
-class TimerReceiver : BroadcastReceiver(){
-    val TAG = "TimerReceiver"
+class AlarmReceiver : BroadcastReceiver(){
+    val TAG = "AlarmReceiver"
 
     override fun onReceive(p0: Context?, p1: Intent?) {
         if(p0 != null && p1 != null && p1.action != null){
@@ -34,10 +34,8 @@ class TimerReceiver : BroadcastReceiver(){
 
                 if(nightMode){
                     if (inTimeWindow){
-                        //TODO set alarm manager to the end
                         Util.setAlarmNightMode(false, p0)
                     } else {
-                        //TODO set alarm manager to the start
                         Util.setAlarmNightMode(true, p0)
                     }
                 }
@@ -97,45 +95,4 @@ class TimerReceiver : BroadcastReceiver(){
             }
         }
     }
-
-    /*private fun setAlarmNightMode(start: Boolean, context: Context){
-        val pref = context.getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE);
-
-        val startHH = pref.getInt(UtilValues.NIGHT_MODE_START_HH, 22)
-        val startMM = pref.getInt(UtilValues.NIGHT_MODE_START_MM, 0)
-        val endHH = pref.getInt(UtilValues.NIGHT_MODE_END_HH, 7)
-        val endMM = pref.getInt(UtilValues.NIGHT_MODE_END_MM, 0)
-
-        //Setting an alarm that will start the night mode
-        if(start){
-            val i = Intent(context, TimerReceiver::class.java)
-            i.action = UtilValues.ACTION_NIGHT_MODE_START
-            val sender = PendingIntent.getBroadcast(context, 1, i, PendingIntent.FLAG_CANCEL_CURRENT)
-
-            val cal = Calendar.getInstance()
-            cal.set(Calendar.HOUR_OF_DAY, startHH)
-            cal.set(Calendar.MINUTE, startMM)
-            cal.set(Calendar.SECOND, 0)
-
-            val am = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            am.set(AlarmManager.RTC_WAKEUP, cal.timeInMillis, sender)
-        }
-
-        //Setting an alarm that will stop the night mode
-        else {
-            val i = Intent(context, TimerReceiver::class.java)
-            i.action = UtilValues.ACTION_NIGHT_MODE_END
-            val sender = PendingIntent.getBroadcast(context, 1, i, PendingIntent.FLAG_CANCEL_CURRENT)
-
-            val cal = Calendar.getInstance()
-            cal.set(Calendar.HOUR_OF_DAY, endHH)
-            cal.set(Calendar.MINUTE, endMM)
-            cal.set(Calendar.SECOND, 0)
-
-            val am = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            am.set(AlarmManager.RTC_WAKEUP, cal.timeInMillis, sender)
-        }
-    }*/
-
-
 }

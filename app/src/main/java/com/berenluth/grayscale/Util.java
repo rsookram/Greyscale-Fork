@@ -18,8 +18,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.DataOutputStream;
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -174,7 +172,7 @@ public class Util {
 
         //Setting an alarm that will start the night mode
         if(start){
-            Intent i = new Intent(context, TimerReceiver.class);
+            Intent i = new Intent(context, AlarmReceiver.class);
             i.setAction(UtilValues.ACTION_NIGHT_MODE_START);
             PendingIntent sender = PendingIntent.getBroadcast(context, 1, i, PendingIntent.FLAG_CANCEL_CURRENT);
 
@@ -191,7 +189,7 @@ public class Util {
 
         //Setting an alarm that will stop the night mode
         else {
-            Intent i = new Intent(context, TimerReceiver.class);
+            Intent i = new Intent(context, AlarmReceiver.class);
             i.setAction(UtilValues.ACTION_NIGHT_MODE_END);
             PendingIntent sender = PendingIntent.getBroadcast(context, 1, i, PendingIntent.FLAG_CANCEL_CURRENT);
 

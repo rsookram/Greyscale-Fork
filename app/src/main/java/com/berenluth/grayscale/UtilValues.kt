@@ -6,8 +6,8 @@ class UtilValues{
     companion object {
 
         //App settings
-        const val DURATION = 10     //Only for tests
-        const val TIME_UNIT = Calendar.SECOND   //
+        const val DURATION = 15     //Only for tests
+        const val TIME_UNIT = Calendar.MINUTE   //
 
         /** Generic preferences values... **/
         const val GENERAL_PREFERENCES = "general_preferences"   //Boolean

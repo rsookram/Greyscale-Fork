@@ -42,7 +42,7 @@ public class ToggleService extends TileService {
 
         Util.toggleGreyscale(this, oldState == Tile.STATE_INACTIVE);
 
-        Intent i = new Intent(getApplicationContext(), TimerReceiver.class);
+        Intent i = new Intent(getApplicationContext(), AlarmReceiver.class);
         i.setAction(UtilValues.ACTION_TIMER_END);
         PendingIntent sender = PendingIntent.getBroadcast(this, getQsTile().getState(), i, PendingIntent.FLAG_CANCEL_CURRENT);
         int duration_code = pref.getInt(UtilValues.TOGGLE_DURATION, 1);
