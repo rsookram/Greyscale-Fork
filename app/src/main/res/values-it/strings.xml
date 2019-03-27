@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Greyscale+</string>
+    <string name="app_name">Grayscale+</string>
     <string name="tips_title">Permesso richiesto!</string>
     <string name="tips_ok">Ok</string>
     <string name="tips_copy">Copia</string>

@@ -20,7 +20,7 @@
     <string name="app_info">Application made by Fabio Rosada, artwork by Natalia Petliak.\n\nYou can find the source code on GitHub https://github.com/BerenLuth/Greyscale\n\nThis app is a fork of Greyscale app made by Fei-ke, you can find the code here https://github.com/fei-ke/Greyscale</string>
     <string name="save">Save</string>
     <string name="preferences_saved">Preferences saved</string>
-    <string name="quik_toggles_help">Quick toggle switches are placed at the top of the notification panel.\nUsually there\'s a button to edit them, you can use it to add and find the greyscale toggle</string>
+    <string name="quik_toggles_help">Quick toggle switches are placed at the top of the notification panel. Usually there\'s a button to edit them, you can use it to add and find the grayscale toggle</string>
     <string name="stop">Stop now</string>
     <string name="timer_auto_stopped">Timer automatically stopped</string>
     <string name="timer_is_running">A timer is running until %1$s</string>
