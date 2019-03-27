@@ -8,6 +8,7 @@ import android.content.ClipboardManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.provider.Settings.Secure;
 import android.widget.Toast;
@@ -121,6 +122,15 @@ public class Util {
             return R.string.minutes;
         else
             return R.string.hours;
+    }
+
+    public static boolean isCurrentTimeInWindow(SharedPreferences prefs){
+        int startHH = prefs.getInt(UtilValues.NIGHT_MODE_START_HH, 22);
+        int startMM = prefs.getInt(UtilValues.NIGHT_MODE_START_MM, 0);
+        int endHH = prefs.getInt(UtilValues.NIGHT_MODE_END_HH, 7);
+        int endMM = prefs.getInt(UtilValues.NIGHT_MODE_END_MM, 0);
+
+        return isCurrentTimeInWindow(startHH, startMM, endHH, endMM);
     }
 
     public static boolean isCurrentTimeInWindow(int startHH, int startMM, int endHH, int endMM){
