@@ -164,6 +164,7 @@ public class Util {
     }
 
     public static void setAlarmNightMode(boolean start, Context context){
+        Log.d("Util", "setAlarmNightMode for start: " + start);
         SharedPreferences pref = context.getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE);
 
         int startHH = pref.getInt(UtilValues.NIGHT_MODE_START_HH, 22);
@@ -182,6 +183,8 @@ public class Util {
             cal.set(Calendar.MINUTE, startMM);
             cal.set(Calendar.SECOND, 0);
 
+            Log.d("Util", "alarmManager for night mode start for " + cal.toString());
+
             AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), sender);
         }
@@ -196,6 +199,8 @@ public class Util {
             cal.set(Calendar.HOUR_OF_DAY, endHH);
             cal.set(Calendar.MINUTE, endMM);
             cal.set(Calendar.SECOND, 0);
+
+            Log.d("Util", "alarmManager for night mode start for " + cal.toString());
 
             AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), sender);

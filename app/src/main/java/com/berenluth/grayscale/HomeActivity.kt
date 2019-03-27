@@ -16,7 +16,7 @@ import java.util.*
 class HomeActivity : AppCompatActivity() {
 
     var default_mode: Boolean = false
-    lateinit var snackbar : Snackbar
+    //lateinit var snackbar : Snackbar
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,10 +36,10 @@ class HomeActivity : AppCompatActivity() {
         val end = prefs.getLong(UtilValues.TIMER_END, 0L)
         val timerMessage = String.format(getString(R.string.timer_is_running), getTimerEnd(end))
 
-        snackbar = Snackbar.make(main_switch, timerMessage, Snackbar.LENGTH_INDEFINITE)
+        /*snackbar = Snackbar.make(main_switch, timerMessage, Snackbar.LENGTH_INDEFINITE)
                 .setAction(R.string.stop) { _ -> run{
                     Util.toggleGreyscale(this, default_mode)
-                }}
+                }}*/
 
         //Call this function when the switch is pressed
         main_switch.setOnCheckedChangeListener { _, s ->
@@ -53,10 +53,10 @@ class HomeActivity : AppCompatActivity() {
                     default_mode = s
                     Log.d("HomeActivity", "Default_mode changed in: $s")
 
-                    if(snackbar.isShown) {
+                    /*if(snackbar.isShown) {
                         snackbar.dismiss()
                         Snackbar.make(main_switch, R.string.timer_auto_stopped, Snackbar.LENGTH_SHORT).show()
-                    }
+                    }*/
                 }
 
                 //Show dialog fragment if app doesn't have permissions
@@ -89,7 +89,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         if( Util.hasPermission(this) && default_mode != Util.isGreyscaleEnable(this) ){
-                snackbar.show()
+                //snackbar.show()
         }
 
 

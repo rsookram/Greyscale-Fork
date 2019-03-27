@@ -15,6 +15,8 @@ class TimerReceiver : BroadcastReceiver(){
 
     override fun onReceive(p0: Context?, p1: Intent?) {
         if(p0 != null && p1 != null && p1.action != null){
+            Log.d(TAG, "Action::" + p1.action)
+
             val prefs = p0.getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE)
             val defaultMode = prefs.getBoolean(UtilValues.DEFAULT_MODE, false)
             val nightMode = prefs.getBoolean(UtilValues.NIGHT_MODE_ENABLED, false)
@@ -27,7 +29,8 @@ class TimerReceiver : BroadcastReceiver(){
                 Log.d(TAG, "Action::" + action)
 
                 val correctState = defaultMode || (nightMode && inTimeWindow)
-                Util.toggleGreyscale(p0, correctState)
+                if(Util.hasPermission(p0))
+                    Util.toggleGreyscale(p0, correctState)
 
                 if(nightMode){
                     if (inTimeWindow){
@@ -42,15 +45,14 @@ class TimerReceiver : BroadcastReceiver(){
 
             /**Timer ended**/
             if(action == UtilValues.ACTION_TIMER_END.toLowerCase()){
-                Log.d(TAG, "Action::" + action)
-
                 val currentMode = Util.isGreyscaleEnable(p0)
                 Log.d(TAG, "Default mode: $defaultMode, current mode $currentMode")
 
                 val correctState = defaultMode || (nightMode && inTimeWindow)
 
                 if (correctState != currentMode) {
-                    Util.toggleGreyscale(p0, defaultMode)
+                    if(Util.hasPermission(p0))
+                        Util.toggleGreyscale(p0, defaultMode)
 
                     Toast.makeText(p0, "Grayscale timer ended", Toast.LENGTH_SHORT).show()
                     Log.d(TAG, "Timer ended, changing mode")
@@ -59,10 +61,13 @@ class TimerReceiver : BroadcastReceiver(){
                 }
             }
 
+            /** Night schedule start intent **/
             if(action == UtilValues.ACTION_NIGHT_MODE_START.toLowerCase()){
+
                 if (nightMode){
-                    if(inTimeWindow){
-                        Util.toggleGreyscale(p0, true)
+                    if(inTimeWindow)
+                        if(Util.hasPermission(p0)){
+                            Util.toggleGreyscale(p0, true)
                         Util.setAlarmNightMode(false, p0) //Set the end alarm
                         Toast.makeText(p0, "Grayscale automatic schedule ON", Toast.LENGTH_SHORT).show()
                     }
@@ -74,11 +79,13 @@ class TimerReceiver : BroadcastReceiver(){
                 }
             }
 
+            /** Night schedule end intent **/
             if(action == UtilValues.ACTION_NIGHT_MODE_END.toLowerCase()){
                 if (nightMode){
                     //If the night schedule is ended
                     if(!inTimeWindow){
-                        Util.toggleGreyscale(p0, false)
+                        if(Util.hasPermission(p0))
+                            Util.toggleGreyscale(p0, false)
                         Util.setAlarmNightMode(true, p0)
                     }
                     //If i reach this point it means that the time window has been changed after this

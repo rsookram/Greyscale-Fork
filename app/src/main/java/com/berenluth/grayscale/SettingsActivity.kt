@@ -79,18 +79,20 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         val endHH = endTime[0].toInt()
         val endMM = endTime[1].toInt()
 
-        val pref = getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE).edit()
-        pref.putInt(UtilValues.NIGHT_MODE_START_HH, startHH)
-        pref.putInt(UtilValues.NIGHT_MODE_START_MM, startMM)
-        pref.putInt(UtilValues.NIGHT_MODE_END_HH, endHH)
-        pref.putInt(UtilValues.NIGHT_MODE_END_MM, endMM)
-
-        pref.apply()
+        val pref = getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE)
+        val editor = pref.edit()
+        editor.putInt(UtilValues.NIGHT_MODE_START_HH, startHH)
+        editor.putInt(UtilValues.NIGHT_MODE_START_MM, startMM)
+        editor.putInt(UtilValues.NIGHT_MODE_END_HH, endHH)
+        editor.putInt(UtilValues.NIGHT_MODE_END_MM, endMM)
+        editor.apply()
 
         if(night_mode_switch.isChecked){
             Log.d(TAG, "Night mode enabled for " + startTime + " -> " + endTime)
             Log.d(TAG, "Current time in window: " + Util.isCurrentTimeInWindow(startHH, startMM, endHH, endMM))
+            Util.setAlarmNightMode(!Util.isCurrentTimeInWindow(pref), applicationContext)
         }
+
     }
 
     private fun updatePreferences(view: View) {
@@ -112,7 +114,7 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         var unit = getString(R.string.minutes)
         if(p1 > 2)
             unit = getString(R.string.hours)
-        var value = Util.codeToTime(p1)
+        val value = Util.codeToTime(p1)
 
         text_toggle_duration.text = String.format(getString(R.string.toggle_duration), value, unit)
 
