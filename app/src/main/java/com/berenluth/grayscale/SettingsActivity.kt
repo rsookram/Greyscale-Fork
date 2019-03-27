@@ -18,7 +18,7 @@ import java.util.*
 
 
 class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
-
+    val TAG = "SettingsActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +54,7 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                 updateTimeSchedule()
 
                 if (!Util.hasPermission(this)){
-                    Log.d("SettingsActivity", "Night mode enabled but no permission")
+                    Log.d(TAG, "Night mode enabled but no permission")
                     Snackbar.make(view, getString(R.string.night_mode_nopermission), Snackbar.LENGTH_LONG).show()
                 }
             }
@@ -86,8 +86,8 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         pref.apply()
 
         if(night_mode_switch.isChecked){
-            Log.d("SettingsActivity", "Night mode enabled for " + startTime + " -> " + endTime)
-
+            Log.d(TAG, "Night mode enabled for " + startTime + " -> " + endTime)
+            Log.d(TAG, "Current time in window: " + Util.isCurrentTimeInWindow(startHH, startMM, endHH, endMM))
         }
     }
 
@@ -118,7 +118,7 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
     private fun timeScheduleListener(textView: EditText){
         val selectedTime = textView.text.split(":")
-        Log.d("Settings", selectedTime.toString())
+        Log.d(TAG, selectedTime.toString())
         val hh = selectedTime[0].toInt()
         val mm = selectedTime[1].toInt()
 

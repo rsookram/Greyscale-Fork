@@ -126,6 +126,7 @@ public class Util {
     public static boolean isCurrentTimeInWindow(int startHH, int startMM, int endHH, int endMM){
         Calendar c = Calendar.getInstance();    //Current time
 
+        Date currentDate = new Date(c.getTimeInMillis());
         Date startDate = new Date(c.getTimeInMillis()); //start date initialized from current time
         Date endDate = new Date(c.getTimeInMillis());   //end date initialized from current time
 
@@ -139,17 +140,11 @@ public class Util {
         endDate.setMinutes(endMM);
         endDate.setSeconds(0);
 
-        //Check if the end date is before the start date, in that case it adds one day to the end date
-        if( endDate.before(startDate) ) {
-            c.add(Calendar.DAY_OF_YEAR, 1);
-            endDate = new Date(c.getTimeInMillis());
-            endDate.setHours(endHH);
-            endDate.setMinutes(endMM);
-            endDate.setSeconds(0);
+        if( startDate.before(endDate) ) {
+            return currentDate.after(startDate) && currentDate.before(endDate);
+        } else {
+            return !currentDate.after(endDate) && currentDate.before(startDate);
         }
 
-        Date currentTime = new Date(Calendar.getInstance().getTimeInMillis());
-
-        return currentTime.after(startDate) && currentTime.before(endDate);
     }
 }
