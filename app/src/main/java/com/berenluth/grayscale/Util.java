@@ -1,16 +1,20 @@
 package com.berenluth.grayscale;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.provider.Settings.Secure;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.DataOutputStream;
@@ -150,11 +154,51 @@ public class Util {
         endDate.setMinutes(endMM);
         endDate.setSeconds(0);
 
-        if( startDate.before(endDate) ) {
-            return currentDate.after(startDate) && currentDate.before(endDate);
+        Log.d("DATE TEST", "dates equal" + startDate.before(startDate));
+
+        if( startDate.before(endDate)) {
+            return (!currentDate.before(startDate)) && currentDate.before(endDate);
         } else {
-            return !currentDate.after(endDate) && currentDate.before(startDate);
+            return !((!currentDate.before(endDate)) && currentDate.before(startDate));
+        }
+    }
+
+    public static void setAlarmNightMode(boolean start, Context context){
+        SharedPreferences pref = context.getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE);
+
+        int startHH = pref.getInt(UtilValues.NIGHT_MODE_START_HH, 22);
+        int startMM = pref.getInt(UtilValues.NIGHT_MODE_START_MM, 0);
+        int endHH = pref.getInt(UtilValues.NIGHT_MODE_END_HH, 7);
+        int endMM = pref.getInt(UtilValues.NIGHT_MODE_END_MM, 0);
+
+        //Setting an alarm that will start the night mode
+        if(start){
+            Intent i = new Intent(context, TimerReceiver.class);
+            i.setAction(UtilValues.ACTION_NIGHT_MODE_START);
+            PendingIntent sender = PendingIntent.getBroadcast(context, 1, i, PendingIntent.FLAG_CANCEL_CURRENT);
+
+            Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.HOUR_OF_DAY, startHH);
+            cal.set(Calendar.MINUTE, startMM);
+            cal.set(Calendar.SECOND, 0);
+
+            AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), sender);
         }
 
+        //Setting an alarm that will stop the night mode
+        else {
+            Intent i = new Intent(context, TimerReceiver.class);
+            i.setAction(UtilValues.ACTION_NIGHT_MODE_END);
+            PendingIntent sender = PendingIntent.getBroadcast(context, 1, i, PendingIntent.FLAG_CANCEL_CURRENT);
+
+            Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.HOUR_OF_DAY, endHH);
+            cal.set(Calendar.MINUTE, endMM);
+            cal.set(Calendar.SECOND, 0);
+
+            AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), sender);
+        }
     }
 }
