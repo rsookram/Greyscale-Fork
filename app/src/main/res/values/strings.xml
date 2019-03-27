@@ -30,4 +30,5 @@
     <string name="user_guide">User guide</string>
     <string name="night_mode">Automatic Schedule</string>
     <string name="night_mode_explanation">You can select a time window in which grayscale turn on automatically.</string>
+    <string name="night_mode_nopermission">This function will not work until you grant the permission to activate grayscale.</string>
 </resources>

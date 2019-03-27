@@ -5,6 +5,8 @@
 
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
 
     <application
         android:allowBackup="false"
@@ -34,7 +36,12 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".TimerReceiver" />
+        <receiver android:name=".TimerReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
 
         <activity android:name=".SettingsActivity"
             android:theme="@style/AppTheme"/>

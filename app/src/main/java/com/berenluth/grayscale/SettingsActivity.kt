@@ -43,37 +43,52 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             }
         }
 
+        //Set the current night mode state into the switch
+        val currentNightModeState = pref.getBoolean(UtilValues.NIGHT_MODE_ENABLED, false)
+        night_mode_switch.isChecked = currentNightModeState
+
+        //Set the switch listener that change the night mode state
+        night_mode_switch.setOnCheckedChangeListener { view, s ->
+            pref.edit().putBoolean(UtilValues.NIGHT_MODE_ENABLED, s).apply()
+            if (s) {
+                updateTimeSchedule()
+
+                if (!Util.hasPermission(this)){
+                    Log.d("SettingsActivity", "Night mode enabled but no permission")
+                    Snackbar.make(view, getString(R.string.night_mode_nopermission), Snackbar.LENGTH_LONG).show()
+                }
+            }
+        }
         night_mode_time_2.setOnClickListener { _-> timeScheduleListener(night_mode_time_2) }
         night_mode_time_4.setOnClickListener { _-> timeScheduleListener(night_mode_time_4) }
+    }
 
-        /*night_mode_time_2.setOnClickListener { _ ->
+    private fun setNightModeAlarm(){
 
-            run {
-                val c = Calendar.getInstance()
-                val selectedTime = night_mode_time_2.text.split(":")
-                Log.d("Settings", selectedTime.toString())
-                val hh = selectedTime[0].toInt()
-                val mm = selectedTime[1].toInt()
-
-                val timePickerDialog = TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
-                    //night_mode_time_2.setText( "" + hourOfDay + ":" + minute)
-                    updateTimeSchedule(night_mode_time_2, hourOfDay, minute)
-                },hh,mm,true)
-                timePickerDialog.show()
-            }*/
 
 
     }
 
     private fun updateTimeSchedule(){
-        var selectedTime = night_mode_time_2.text.split(":")
-        val startHH = selectedTime[0].toInt()
-        val startMM = selectedTime[1].toInt()
-        selectedTime = night_mode_time_4.text.split(":")
-        val endHH = selectedTime[0].toInt()
-        val endMM = selectedTime[1].toInt()
+        val startTime = night_mode_time_2.text.split(":")
+        val startHH = startTime[0].toInt()
+        val startMM = startTime[1].toInt()
+        val endTime = night_mode_time_4.text.split(":")
+        val endHH = endTime[0].toInt()
+        val endMM = endTime[1].toInt()
 
+        val pref = getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE).edit()
+        pref.putInt(UtilValues.NIGHT_MODE_START_HH, startHH)
+        pref.putInt(UtilValues.NIGHT_MODE_START_MM, startMM)
+        pref.putInt(UtilValues.NIGHT_MODE_END_HH, endHH)
+        pref.putInt(UtilValues.NIGHT_MODE_END_MM, endMM)
 
+        pref.apply()
+
+        if(night_mode_switch.isChecked){
+            Log.d("SettingsActivity", "Night mode enabled for " + startTime + " -> " + endTime)
+
+        }
     }
 
     private fun updatePreferences(view: View) {

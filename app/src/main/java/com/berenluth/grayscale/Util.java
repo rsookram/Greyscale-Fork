@@ -13,6 +13,10 @@ import android.provider.Settings.Secure;
 import android.widget.Toast;
 
 import java.io.DataOutputStream;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Util {
     private static final String PERMISSION = "android.permission.WRITE_SECURE_SETTINGS";
@@ -117,5 +121,35 @@ public class Util {
             return R.string.minutes;
         else
             return R.string.hours;
+    }
+
+    public static boolean isCurrentTimeInWindow(int startHH, int startMM, int endHH, int endMM){
+        Calendar c = Calendar.getInstance();    //Current time
+
+        Date startDate = new Date(c.getTimeInMillis()); //start date initialized from current time
+        Date endDate = new Date(c.getTimeInMillis());   //end date initialized from current time
+
+        //Set selected hours and minutes to the start date
+        startDate.setHours(startHH);
+        startDate.setMinutes(startMM);
+        startDate.setSeconds(0);
+
+        //Set selected hours and minutes to the end date
+        endDate.setHours(endHH);
+        endDate.setMinutes(endMM);
+        endDate.setSeconds(0);
+
+        //Check if the end date is before the start date, in that case it adds one day to the end date
+        if( endDate.before(startDate) ) {
+            c.add(Calendar.DAY_OF_YEAR, 1);
+            endDate = new Date(c.getTimeInMillis());
+            endDate.setHours(endHH);
+            endDate.setMinutes(endMM);
+            endDate.setSeconds(0);
+        }
+
+        Date currentTime = new Date(Calendar.getInstance().getTimeInMillis());
+
+        return currentTime.after(startDate) && currentTime.before(endDate);
     }
 }
