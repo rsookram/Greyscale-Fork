@@ -50,7 +50,7 @@ class AlarmReceiver : BroadcastReceiver(){
 
                 if (correctState != currentMode) {
                     if(Util.hasPermission(p0))
-                        Util.toggleGreyscale(p0, defaultMode)
+                        Util.toggleGreyscale(p0, correctState)
 
                     Toast.makeText(p0, "Grayscale timer ended", Toast.LENGTH_SHORT).show()
                     Log.d(TAG, "Timer ended, changing mode")
