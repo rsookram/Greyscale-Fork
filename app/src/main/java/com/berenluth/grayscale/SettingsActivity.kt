@@ -57,6 +57,16 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         }
         night_mode_time_2.setOnClickListener { _ -> timeScheduleListener(night_mode_time_2) }
         night_mode_time_4.setOnClickListener { _ -> timeScheduleListener(night_mode_time_4) }
+
+        button_share.setOnClickListener { _->
+            val sendIntent = Intent()
+            sendIntent.action = Intent.ACTION_SEND
+            sendIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, getString(R.string.app_name))
+            sendIntent.putExtra(Intent.EXTRA_TEXT,
+                    getString(R.string.share_app_text))
+            sendIntent.type = "text/plain"
+            startActivity(Intent.createChooser(sendIntent, getString(R.string.choose_one)))
+        }
     }
 
     private fun updateTimeSchedule() {
