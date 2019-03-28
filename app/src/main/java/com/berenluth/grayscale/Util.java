@@ -181,6 +181,10 @@ public class Util {
             cal.set(Calendar.MINUTE, startMM);
             cal.set(Calendar.SECOND, 0);
 
+            //If the start is before now, it means that it's in the next day
+            if( cal.before(Calendar.getInstance()) )
+                cal.add(Calendar.DAY_OF_YEAR, 1);
+
             Log.d("Util", "alarmManager for night mode start for " + cal.toString());
 
             AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
