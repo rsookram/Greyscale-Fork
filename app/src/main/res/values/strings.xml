@@ -31,4 +31,5 @@
     <string name="night_mode">Auto Switch</string>
     <string name="night_mode_explanation">You can select a time window to turn greyscale on automatically.</string>
     <string name="night_mode_nopermission">This function will not work until you grant the permission to activate grayscale.</string>
+    <string name="share_button_description">Share this app with friends</string>
 </resources>
