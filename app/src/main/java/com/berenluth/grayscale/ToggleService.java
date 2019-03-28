@@ -37,8 +37,14 @@ public class ToggleService extends TileService {
 
         SharedPreferences pref = getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE);
 
+        boolean defaultMode = pref.getBoolean(UtilValues.DEFAULT_MODE, false);
+        boolean nightMode = pref.getBoolean(UtilValues.NIGHT_MODE_ENABLED, false);
+        boolean inTimeWindow = Util.isCurrentTimeInWindow(pref);
+
+        boolean currentState = defaultMode || (nightMode && inTimeWindow);
+
         //If the current state is different from the default state, it means that a timer is running
-        boolean isTimerSet = (pref.getBoolean(UtilValues.DEFAULT_MODE, false) != Util.isGreyscaleEnable(this));
+        boolean isTimerSet = currentState != Util.isGreyscaleEnable(this);
 
         Util.toggleGreyscale(this, oldState == Tile.STATE_INACTIVE);
 
