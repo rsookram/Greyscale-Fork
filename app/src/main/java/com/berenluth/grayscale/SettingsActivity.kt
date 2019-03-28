@@ -67,6 +67,11 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             sendIntent.type = "text/plain"
             startActivity(Intent.createChooser(sendIntent, getString(R.string.choose_one)))
         }
+
+        button_donate.visibility = View.GONE
+        button_donate.setOnClickListener { _ ->
+            //TODO implement donations
+        }
     }
 
     private fun updateTimeSchedule() {

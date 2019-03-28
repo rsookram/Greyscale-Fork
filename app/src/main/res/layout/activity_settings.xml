@@ -22,7 +22,9 @@
                 android:layout_height="65dp"
                 android:background="?selectableItemBackgroundBorderless"
                 android:padding="16dp"
-                android:src="@drawable/ic_arrow_back_black_24dp" />
+                android:src="@drawable/ic_arrow_back_black_24dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <LinearLayout
                 android:id="@+id/about"
@@ -96,7 +98,9 @@
                         android:paddingEnd="16dp"
                         android:text="@string/toggle_duration"
                         android:textColor="@android:color/secondary_text_light"
-                        android:textSize="@dimen/text_title" />
+                        android:textSize="@dimen/text_title"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
 
                     <TextView
                         android:id="@+id/text_toggle_explanation"
@@ -106,7 +110,8 @@
                         android:paddingEnd="16dp"
                         android:text="@string/toggle_explanation"
                         android:textSize="@dimen/text_small"
-                        app:layout_constraintTop_toBottomOf="@id/text_toggle_duration" />
+                        app:layout_constraintTop_toBottomOf="@id/text_toggle_duration"
+                        app:layout_constraintStart_toStartOf="parent"/>
 
                     <SeekBar
                         android:id="@+id/seekBar"
@@ -162,14 +167,16 @@
                         android:textSize="@dimen/text_title"
                         app:layout_constraintEnd_toStartOf="@id/night_mode_switch"
                         app:layout_constraintHorizontal_chainStyle="spread_inside"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
 
                     <Switch
                         android:id="@+id/night_mode_switch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/night_mode_title" />
+                        app:layout_constraintStart_toEndOf="@id/night_mode_title"
+                        app:layout_constraintTop_toTopOf="parent"/>
 
                     <TextView
                         android:id="@+id/night_mode_explanation"
@@ -189,7 +196,7 @@
                         android:layout_height="wrap_content"
                         android:paddingStart="16dp"
                         android:paddingTop="16dp"
-                        android:text="Activate between"
+                        android:text="@string/activate_between"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/night_mode_explanation" />
 
@@ -209,7 +216,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="16dp"
-                        android:text="and"
+                        android:text="@string/activate_until"
                         app:layout_constraintBaseline_toBaselineOf="@id/night_mode_time_1"
                         app:layout_constraintStart_toEndOf="@id/night_mode_time_2"/>
 
@@ -248,9 +255,9 @@
                 android:layout_height="wrap_content"
                 android:background="?android:selectableItemBackgroundBorderless"
                 android:contentDescription="@string/share_button_description"
-                android:text="Share"
+                android:text="@string/share_button_text"
                 app:layout_constraintHorizontal_chainStyle="spread"
-                app:drawableRightCompat="@drawable/ic_share_black_24dp"
+                app:drawableTopCompat="@drawable/ic_share_black_24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/button_user_guide"
                 app:layout_constraintEnd_toStartOf="@id/button_donate"
@@ -258,14 +265,14 @@
                 android:layout_margin="16dp"/>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:visibility="gone"
+                android:visibility="visible"
                 android:id="@+id/button_donate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?android:selectableItemBackgroundBorderless"
-                android:contentDescription="@string/share_button_description"
-                android:text="Donate"
-                app:drawableLeftCompat="@drawable/ic_heart_red"
+                android:contentDescription="@string/donate_button_description"
+                android:text="@string/donate_button_text"
+                app:drawableTopCompat="@drawable/ic_heart_red"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/button_share"
                 app:layout_constraintStart_toEndOf="@id/button_share"
