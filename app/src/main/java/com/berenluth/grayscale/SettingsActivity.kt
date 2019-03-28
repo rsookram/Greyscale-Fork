@@ -49,26 +49,17 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         //Set the switch listener that change the night mode state
         night_mode_switch.setOnCheckedChangeListener { view, s ->
             pref.edit().putBoolean(UtilValues.NIGHT_MODE_ENABLED, s).apply()
-            if (s) {
-                updateTimeSchedule()
-
-                if (!Util.hasPermission(this)){
-                    Log.d(TAG, "Night mode enabled but no permission")
-                    Snackbar.make(view, getString(R.string.night_mode_nopermission), Snackbar.LENGTH_LONG).show()
-                }
+            updateTimeSchedule()
+            if (s && !Util.hasPermission(this)) {
+                Log.d(TAG, "Night mode enabled but no permission")
+                Snackbar.make(view, getString(R.string.night_mode_nopermission), Snackbar.LENGTH_LONG).show()
             }
         }
-        night_mode_time_2.setOnClickListener { _-> timeScheduleListener(night_mode_time_2) }
-        night_mode_time_4.setOnClickListener { _-> timeScheduleListener(night_mode_time_4) }
+        night_mode_time_2.setOnClickListener { _ -> timeScheduleListener(night_mode_time_2) }
+        night_mode_time_4.setOnClickListener { _ -> timeScheduleListener(night_mode_time_4) }
     }
 
-    private fun setNightModeAlarm(){
-
-
-
-    }
-
-    private fun updateTimeSchedule(){
+    private fun updateTimeSchedule() {
         val startTime = night_mode_time_2.text.split(":")
         val startHH = startTime[0].toInt()
         val startMM = startTime[1].toInt()
@@ -84,10 +75,16 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         editor.putInt(UtilValues.NIGHT_MODE_END_MM, endMM)
         editor.apply()
 
-        if(night_mode_switch.isChecked){
+        if (night_mode_switch.isChecked) {
             Log.d(TAG, "Night mode enabled for " + startTime + " -> " + endTime)
             Log.d(TAG, "Current time in window: " + Util.isCurrentTimeInWindow(startHH, startMM, endHH, endMM))
             Util.setAlarmNightMode(!Util.isCurrentTimeInWindow(pref), applicationContext)
+
+            if (Util.hasPermission(baseContext))
+                Util.toggleGreyscale(baseContext, Util.isCurrentTimeInWindow(startHH, startMM, endHH, endMM))
+        } else {
+            if (Util.hasPermission(baseContext))
+                Util.toggleGreyscale(baseContext, false)
         }
 
     }
@@ -102,14 +99,14 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
     }
 
     override fun onStopTrackingTouch(p0: SeekBar?) {
-        if(p0 != null)
+        if (p0 != null)
             updatePreferences(p0 as View)
     }
 
 
     override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
         var unit = getString(R.string.minutes)
-        if(p1 > 2)
+        if (p1 > 2)
             unit = getString(R.string.hours)
         val value = Util.codeToTime(p1)
 
@@ -117,7 +114,7 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
     }
 
-    private fun timeScheduleListener(textView: EditText){
+    private fun timeScheduleListener(textView: EditText) {
         val selectedTime = textView.text.split(":")
         Log.d(TAG, selectedTime.toString())
         val hh = selectedTime[0].toInt()
@@ -128,12 +125,12 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             val textString = hourOfDay.toString().padStart(2, '0') + ":" + minute.toString().padStart(2, '0')
             textView.setText(textString)
             updateTimeSchedule()
-        },hh,mm,true)
+        }, hh, mm, true)
 
         timePickerDialog.show()
     }
 
-    private fun loadNightModeTime(pref: SharedPreferences){
+    private fun loadNightModeTime(pref: SharedPreferences) {
         val startHH = pref.getInt(UtilValues.NIGHT_MODE_START_HH, 22)
         val startMM = pref.getInt(UtilValues.NIGHT_MODE_START_MM, 0)
         val endHH = pref.getInt(UtilValues.NIGHT_MODE_END_HH, 7)
