@@ -68,9 +68,12 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             startActivity(Intent.createChooser(sendIntent, getString(R.string.choose_one)))
         }
 
-        button_donate.visibility = View.GONE
+        //button_donate.visibility = View.GONE
         button_donate.setOnClickListener { _ ->
-            //TODO implement donations
+            val url = "https://www.paypal.me/FabioRosada"
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            startActivity(i)
         }
     }
 
