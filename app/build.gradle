@@ -8,7 +8,7 @@ android {
         applicationId 'com.berenluth.grayscale'
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 9
+        versionCode 10
         versionName "1.4.0"
     }
     signingConfigs {

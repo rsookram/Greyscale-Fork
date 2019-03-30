@@ -8,14 +8,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.SeekBar
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_settings.*
-import android.widget.TimePicker
 import android.app.TimePickerDialog
 import android.content.SharedPreferences
 import android.util.Log
 import android.widget.EditText
-import java.util.*
 
 
 class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
@@ -107,8 +104,8 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
     }
 
-    private fun updatePreferences(view: View) {
-        Snackbar.make(view, getString(R.string.preferences_saved), Snackbar.LENGTH_SHORT).show()
+    private fun updateTimerPreferences(view: View) {
+        //Snackbar.make(view, getString(R.string.preferences_saved), Snackbar.LENGTH_SHORT).show()
         val pref = getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE)
         pref.edit().putInt(UtilValues.TOGGLE_DURATION, seekBar.progress).apply()
     }
@@ -118,7 +115,7 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
     override fun onStopTrackingTouch(p0: SeekBar?) {
         if (p0 != null)
-            updatePreferences(p0 as View)
+            updateTimerPreferences(p0 as View)
     }
 
 

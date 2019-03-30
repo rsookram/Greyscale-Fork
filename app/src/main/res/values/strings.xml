@@ -29,7 +29,7 @@
     <string name="need_help">Need help?</string>
     <string name="user_guide">User guide</string>
     <string name="night_mode">Auto Switch</string>
-    <string name="night_mode_explanation">You can select a time window to turn grayscale on automatically.</string>
+    <string name="night_mode_explanation">You can select a time window to turn grayscale on automatically (if the default mode is OFF).</string>
     <string name="night_mode_nopermission">This function will not work until you grant the permission to activate grayscale.</string>
     <string name="share_button_description">Share this app with friends</string>
     <string name="share_app_text">Grayscale+ allows you to put a gray-scale filter on your phone, download it from https://play.google.com/store/apps/details?id=com.berenluth.grayscale</string>
