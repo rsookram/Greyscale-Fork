@@ -37,4 +37,5 @@
     <string name="share_button_text">Condividi</string>
     <string name="donate_button_text">Donazione</string>
     <string name="donate_button_description">Donazione</string>
+    <string name="donate_link">https://bit.ly/grayscaledonate_ita</string>
 </resources>
