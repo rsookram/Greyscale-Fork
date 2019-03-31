@@ -174,6 +174,8 @@ public class Util {
         if(start){
             Intent i = new Intent(context, AlarmReceiver.class);
             i.setAction(UtilValues.ACTION_NIGHT_MODE_START);
+            //TODO attach ID in the intent
+
             PendingIntent sender = PendingIntent.getBroadcast(context, 1, i, PendingIntent.FLAG_CANCEL_CURRENT);
 
             Calendar cal = Calendar.getInstance();
@@ -195,6 +197,8 @@ public class Util {
         else {
             Intent i = new Intent(context, AlarmReceiver.class);
             i.setAction(UtilValues.ACTION_NIGHT_MODE_END);
+            //TODO attach ID in the intent
+
             PendingIntent sender = PendingIntent.getBroadcast(context, 1, i, PendingIntent.FLAG_CANCEL_CURRENT);
 
             Calendar cal = Calendar.getInstance();

@@ -28,6 +28,8 @@ class AlarmReceiver : BroadcastReceiver(){
             if(action == Intent.ACTION_BOOT_COMPLETED.toLowerCase()){
                 Log.d(TAG, "Action::" + action)
 
+                //TODO set alarm night id = 0 in the preferences, then set the alarm with id 0
+
                 val correctState = defaultMode || (nightMode && inTimeWindow)
                 if(Util.hasPermission(p0))
                     Util.toggleGreyscale(p0, correctState)
@@ -62,6 +64,8 @@ class AlarmReceiver : BroadcastReceiver(){
             /** Night schedule start intent **/
             if(action == UtilValues.ACTION_NIGHT_MODE_START.toLowerCase()){
 
+                //TODO check id saved with id in the intent, if they're different, don't do anything
+
                 if (nightMode){
                     if(inTimeWindow)
                         if(Util.hasPermission(p0)){
@@ -79,6 +83,9 @@ class AlarmReceiver : BroadcastReceiver(){
 
             /** Night schedule end intent **/
             if(action == UtilValues.ACTION_NIGHT_MODE_END.toLowerCase()){
+
+                //TODO check id saved with id in the intent, if they're different, don't do anything
+
                 if (nightMode){
                     //If the night schedule is ended
                     if(!inTimeWindow){

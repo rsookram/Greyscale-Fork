@@ -22,6 +22,7 @@ class UtilValues{
         const val NIGHT_MODE_ENABLED = "night_mode_enabled"     //Boolean
         const val ACTION_NIGHT_MODE_START = "action_night_start"
         const val ACTION_NIGHT_MODE_END = "action_night_end"
+        const val ALARM_NIGHT_MODE_ID = "alarm_night_mode_id"   //Int
 
         const val NIGHT_MODE_START_HH = "night_mode_start_hh"   //Int between 0 and 23
         const val NIGHT_MODE_START_MM = "night_mode_start_mm"   //Int between 0 and 59

@@ -88,6 +88,8 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         editor.putInt(UtilValues.NIGHT_MODE_START_MM, startMM)
         editor.putInt(UtilValues.NIGHT_MODE_END_HH, endHH)
         editor.putInt(UtilValues.NIGHT_MODE_END_MM, endMM)
+        //TODO add 1 to night mode ID
+
         editor.apply()
 
         if (night_mode_switch.isChecked) {
