@@ -88,7 +88,11 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         editor.putInt(UtilValues.NIGHT_MODE_START_MM, startMM)
         editor.putInt(UtilValues.NIGHT_MODE_END_HH, endHH)
         editor.putInt(UtilValues.NIGHT_MODE_END_MM, endMM)
-        //TODO add 1 to night mode ID
+
+        //New edit in night mode, increase id
+        val nightID = pref.getInt(UtilValues.ALARM_NIGHT_MODE_ID, 0)
+        editor.putInt(UtilValues.ALARM_NIGHT_MODE_ID, nightID+1)
+        Log.d(TAG, "NightMode updated, id=$nightID")
 
         editor.apply()
 

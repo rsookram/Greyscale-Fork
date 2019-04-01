@@ -10,11 +10,11 @@ import android.widget.Toast
  * To maintain the logic of the app, this class should -ONLY- set the mode
  * back to the default_mode value (written in preferences)
  */
-class AlarmReceiver : BroadcastReceiver(){
+class AlarmReceiver : BroadcastReceiver() {
     val TAG = "AlarmReceiver"
 
     override fun onReceive(p0: Context?, p1: Intent?) {
-        if(p0 != null && p1 != null && p1.action != null){
+        if (p0 != null && p1 != null && p1.action != null) {
             Log.d(TAG, "Action::" + p1.action)
 
             val prefs = p0.getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE)
@@ -22,20 +22,25 @@ class AlarmReceiver : BroadcastReceiver(){
             val nightMode = prefs.getBoolean(UtilValues.NIGHT_MODE_ENABLED, false)
             val inTimeWindow = Util.isCurrentTimeInWindow(prefs)
 
+            val prefNightID = prefs.getInt(UtilValues.ALARM_NIGHT_MODE_ID, 0)
+            val intentNightID = p1.getIntExtra(UtilValues.ALARM_NIGHT_MODE_ID, 0)
+            Log.d(TAG, "Night id in the preferences=$prefNightID, id received=$intentNightID")
+
             val action = p1.action.toLowerCase()
 
             /**Boot completed**/
-            if(action == Intent.ACTION_BOOT_COMPLETED.toLowerCase()){
+            if (action == Intent.ACTION_BOOT_COMPLETED.toLowerCase()) {
                 Log.d(TAG, "Action::" + action)
 
                 //TODO set alarm night id = 0 in the preferences, then set the alarm with id 0
+                prefs.edit().putInt(UtilValues.ALARM_NIGHT_MODE_ID, 0).apply()
 
                 val correctState = defaultMode || (nightMode && inTimeWindow)
-                if(Util.hasPermission(p0))
+                if (Util.hasPermission(p0))
                     Util.toggleGreyscale(p0, correctState)
 
-                if(nightMode){
-                    if (inTimeWindow){
+                if (nightMode) {
+                    if (inTimeWindow) {
                         Util.setAlarmNightMode(false, p0)
                     } else {
                         Util.setAlarmNightMode(true, p0)
@@ -44,14 +49,14 @@ class AlarmReceiver : BroadcastReceiver(){
             }
 
             /**Timer ended**/
-            if(action == UtilValues.ACTION_TIMER_END.toLowerCase()){
+            if (action == UtilValues.ACTION_TIMER_END.toLowerCase()) {
                 val currentMode = Util.isGreyscaleEnable(p0)
                 Log.d(TAG, "Default mode: $defaultMode, current mode $currentMode")
 
                 val correctState = defaultMode || (nightMode && inTimeWindow)
 
                 if (correctState != currentMode) {
-                    if(Util.hasPermission(p0))
+                    if (Util.hasPermission(p0))
                         Util.toggleGreyscale(p0, correctState)
 
                     Toast.makeText(p0, "Grayscale timer ended", Toast.LENGTH_SHORT).show()
@@ -62,40 +67,44 @@ class AlarmReceiver : BroadcastReceiver(){
             }
 
             /** Night schedule start intent **/
-            if(action == UtilValues.ACTION_NIGHT_MODE_START.toLowerCase()){
+            if (action == UtilValues.ACTION_NIGHT_MODE_START.toLowerCase()) {
 
                 //TODO check id saved with id in the intent, if they're different, don't do anything
-
-                if (nightMode){
-                    if(inTimeWindow)
-                        if(Util.hasPermission(p0)){
+                if( prefNightID != intentNightID){
+                    Log.d(TAG, "Old intent")
+                }
+                else if (nightMode) {
+                    if (inTimeWindow)
+                        if (Util.hasPermission(p0)) {
                             Util.toggleGreyscale(p0, true)
-                        Util.setAlarmNightMode(false, p0) //Set the end alarm
-                        Toast.makeText(p0, "Grayscale automatic schedule ON", Toast.LENGTH_SHORT).show()
-                    }
-                    //If i reach this point it means that the time window has been changed after this
-                    //timer has been set, so i just set the start again in at the right time
-                    else {
-                        Util.setAlarmNightMode(true, p0)
-                    }
+                            Util.setAlarmNightMode(false, p0) //Set the end alarm
+                            Toast.makeText(p0, "Grayscale automatic schedule ON", Toast.LENGTH_SHORT).show()
+                        }
+                        //If i reach this point it means that the time window has been changed after this
+                        //timer has been set, so i just set the start again in at the right time
+                        else {
+                            Util.setAlarmNightMode(true, p0)
+                        }
                 }
             }
 
             /** Night schedule end intent **/
-            if(action == UtilValues.ACTION_NIGHT_MODE_END.toLowerCase()){
+            if (action == UtilValues.ACTION_NIGHT_MODE_END.toLowerCase()) {
 
                 //TODO check id saved with id in the intent, if they're different, don't do anything
-
-                if (nightMode){
+                if( prefNightID != intentNightID){
+                    Log.d(TAG, "Old intent")
+                }
+                else if (nightMode) {
                     //If the night schedule is ended
-                    if(!inTimeWindow){
-                        if(Util.hasPermission(p0))
+                    if (!inTimeWindow) {
+                        if (Util.hasPermission(p0))
                             Util.toggleGreyscale(p0, false)
                         Util.setAlarmNightMode(true, p0)
                     }
                     //If i reach this point it means that the time window has been changed after this
                     //Timer has been set, so i just set the end again to the updated end
-                    else{
+                    else {
                         Util.setAlarmNightMode(false, p0)
                     }
                 }

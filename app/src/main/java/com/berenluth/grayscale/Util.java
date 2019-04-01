@@ -169,12 +169,14 @@ public class Util {
         int startMM = pref.getInt(UtilValues.NIGHT_MODE_START_MM, 0);
         int endHH = pref.getInt(UtilValues.NIGHT_MODE_END_HH, 7);
         int endMM = pref.getInt(UtilValues.NIGHT_MODE_END_MM, 0);
+        int nightID = pref.getInt(UtilValues.ALARM_NIGHT_MODE_ID, 0);
+
+        Intent i = new Intent(context, AlarmReceiver.class);
+        i.putExtra(UtilValues.ALARM_NIGHT_MODE_ID, nightID);
 
         //Setting an alarm that will start the night mode
         if(start){
-            Intent i = new Intent(context, AlarmReceiver.class);
             i.setAction(UtilValues.ACTION_NIGHT_MODE_START);
-            //TODO attach ID in the intent
 
             PendingIntent sender = PendingIntent.getBroadcast(context, 1, i, PendingIntent.FLAG_CANCEL_CURRENT);
 
@@ -195,9 +197,7 @@ public class Util {
 
         //Setting an alarm that will stop the night mode
         else {
-            Intent i = new Intent(context, AlarmReceiver.class);
             i.setAction(UtilValues.ACTION_NIGHT_MODE_END);
-            //TODO attach ID in the intent
 
             PendingIntent sender = PendingIntent.getBroadcast(context, 1, i, PendingIntent.FLAG_CANCEL_CURRENT);
 
