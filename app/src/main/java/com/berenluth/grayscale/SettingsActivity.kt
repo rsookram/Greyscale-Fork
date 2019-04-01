@@ -67,7 +67,7 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
         //button_donate.visibility = View.GONE
         button_donate.setOnClickListener { _ ->
-            val url = "https://bit.ly/grayscaledonate"
+            val url = getString(R.string.donate_link)
             val i = Intent(Intent.ACTION_VIEW)
             i.data = Uri.parse(url)
             startActivity(i)
