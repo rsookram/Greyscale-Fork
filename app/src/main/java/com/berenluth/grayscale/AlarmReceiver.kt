@@ -8,7 +8,7 @@ import android.widget.Toast
 
 /**
  * To maintain the logic of the app, this class should -ONLY- set the mode
- * back to the default_mode value (written in preferences)
+ * back to the defaultMode value (written in preferences)
  */
 class AlarmReceiver : BroadcastReceiver() {
     val TAG = "AlarmReceiver"

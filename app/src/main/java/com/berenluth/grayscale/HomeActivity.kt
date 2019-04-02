@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_home.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -15,7 +14,7 @@ import java.util.*
 
 class HomeActivity : AppCompatActivity() {
 
-    var default_mode: Boolean = false
+    var defaultMode: Boolean = false
     //lateinit var snackbar : Snackbar
 
 
@@ -25,32 +24,37 @@ class HomeActivity : AppCompatActivity() {
 
         //Read the user saved preference
         val prefs = this.getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE)
-        default_mode = prefs.getBoolean(UtilValues.DEFAULT_MODE, false)
+        defaultMode = prefs.getBoolean(UtilValues.DEFAULT_MODE, false)
 
-        Log.d("HomeActivity", "Default mode = $default_mode")
+        Log.d("HomeActivity", "Default mode = $defaultMode")
 
         //Update the switch and other views with the correct default mode
-        main_switch.isChecked = default_mode
-        animateUI(default_mode)
+        main_switch.isChecked = defaultMode
+        animateUI(defaultMode)
 
         val end = prefs.getLong(UtilValues.TIMER_END, 0L)
         val timerMessage = String.format(getString(R.string.timer_is_running), getTimerEnd(end))
 
+        val nightMode = prefs.getBoolean(UtilValues.NIGHT_MODE_ENABLED, false)
+        val inTimeWindow = Util.isCurrentTimeInWindow(prefs)
+
         /*snackbar = Snackbar.make(main_switch, timerMessage, Snackbar.LENGTH_INDEFINITE)
                 .setAction(R.string.stop) { _ -> run{
-                    Util.toggleGreyscale(this, default_mode)
+                    Util.toggleGreyscale(this, defaultMode)
                 }}*/
 
         //Call this function when the switch is pressed
         main_switch.setOnCheckedChangeListener { _, s ->
             run {
                 if (Util.hasPermission(this)) {
-                    Util.toggleGreyscale(this, s)
+                    defaultMode = s
+                    val correctState = defaultMode || (nightMode && inTimeWindow)
+
+                    Util.toggleGreyscale(this, correctState)
                     animateUI(s)
 
                     //Update user's preference with the new default mode
                     prefs.edit().putBoolean(UtilValues.DEFAULT_MODE, s).apply()
-                    default_mode = s
                     Log.d("HomeActivity", "Default_mode changed in: $s")
 
                     /*if(snackbar.isShown) {
@@ -88,7 +92,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        if( Util.hasPermission(this) && default_mode != Util.isGreyscaleEnable(this) ){
+        if( Util.hasPermission(this) && defaultMode != Util.isGreyscaleEnable(this) ){
                 //snackbar.show()
         }
 

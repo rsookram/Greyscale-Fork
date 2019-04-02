@@ -11,7 +11,7 @@ class UtilValues{
 
         /** Generic preferences values... **/
         const val GENERAL_PREFERENCES = "general_preferences"   //Boolean
-        const val DEFAULT_MODE = "default_mode"
+        const val DEFAULT_MODE = "defaultMode"
         const val TOGGLE_DURATION = "toggle_duration"
 
         /** Timer values **/
