@@ -96,18 +96,20 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
         editor.apply()
 
-        if (night_mode_switch.isChecked) {
+        val defaultMode = pref.getBoolean(UtilValues.DEFAULT_MODE, false)
+        val nightMode = night_mode_switch.isChecked
+        val inTimeWindow = Util.isCurrentTimeInWindow(startHH, startMM, endHH, endMM)
+
+        val correctState = defaultMode || (nightMode && inTimeWindow)
+
+        if (nightMode) {
             Log.d(TAG, "Night mode enabled for " + startTime + " -> " + endTime)
             Log.d(TAG, "Current time in window: " + Util.isCurrentTimeInWindow(startHH, startMM, endHH, endMM))
             Util.setAlarmNightMode(!Util.isCurrentTimeInWindow(pref), applicationContext)
-
-            if (Util.hasPermission(baseContext))
-                Util.toggleGreyscale(baseContext, Util.isCurrentTimeInWindow(startHH, startMM, endHH, endMM))
-        } else {
-            if (Util.hasPermission(baseContext))
-                Util.toggleGreyscale(baseContext, false)
         }
 
+        if (Util.hasPermission(baseContext))
+                Util.toggleGreyscale(baseContext, correctState)
     }
 
     private fun updateTimerPreferences(view: View) {
