@@ -22,6 +22,8 @@ class AlarmReceiver : BroadcastReceiver() {
             val nightMode = prefs.getBoolean(UtilValues.NIGHT_MODE_ENABLED, false)
             val inTimeWindow = Util.isCurrentTimeInWindow(prefs)
 
+            val correctState = defaultMode || (nightMode && inTimeWindow)
+
             val prefNightID = prefs.getInt(UtilValues.ALARM_NIGHT_MODE_ID, 0)
             val intentNightID = p1.getIntExtra(UtilValues.ALARM_NIGHT_MODE_ID, 0)
             Log.d(TAG, "Night id in the preferences=$prefNightID, id received=$intentNightID")
@@ -35,7 +37,6 @@ class AlarmReceiver : BroadcastReceiver() {
                 //TODO set alarm night id = 0 in the preferences, then set the alarm with id 0
                 prefs.edit().putInt(UtilValues.ALARM_NIGHT_MODE_ID, 0).apply()
 
-                val correctState = defaultMode || (nightMode && inTimeWindow)
                 if (Util.hasPermission(p0))
                     Util.toggleGreyscale(p0, correctState)
 
@@ -52,8 +53,6 @@ class AlarmReceiver : BroadcastReceiver() {
             if (action == UtilValues.ACTION_TIMER_END.toLowerCase()) {
                 val currentMode = Util.isGreyscaleEnable(p0)
                 Log.d(TAG, "Default mode: $defaultMode, current mode $currentMode")
-
-                val correctState = defaultMode || (nightMode && inTimeWindow)
 
                 if (correctState != currentMode) {
                     if (Util.hasPermission(p0))
@@ -76,7 +75,7 @@ class AlarmReceiver : BroadcastReceiver() {
                 else if (nightMode) {
                     if (inTimeWindow)
                         if (Util.hasPermission(p0)) {
-                            Util.toggleGreyscale(p0, true)
+                            Util.toggleGreyscale(p0, correctState)
                             Util.setAlarmNightMode(false, p0) //Set the end alarm
                             Toast.makeText(p0, "Grayscale automatic schedule ON", Toast.LENGTH_SHORT).show()
                         }
@@ -99,7 +98,7 @@ class AlarmReceiver : BroadcastReceiver() {
                     //If the night schedule is ended
                     if (!inTimeWindow) {
                         if (Util.hasPermission(p0))
-                            Util.toggleGreyscale(p0, false)
+                            Util.toggleGreyscale(p0, correctState)
                         Util.setAlarmNightMode(true, p0)
                     }
                     //If i reach this point it means that the time window has been changed after this
