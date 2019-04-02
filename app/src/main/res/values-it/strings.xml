@@ -38,4 +38,6 @@
     <string name="donate_button_text">Donazione</string>
     <string name="donate_button_description">Donazione</string>
     <string name="donate_link">https://bit.ly/grayscaledonate_ita</string>
+    <string name="night_mode_running">Auto Switch è attivo in questo momento</string>
+    <string name="edit">modifica</string>
 </resources>

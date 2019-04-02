@@ -40,4 +40,6 @@
     <string name="donate_button_text">Donate</string>
     <string name="donate_button_description">Donate</string>
     <string name="donate_link">https://bit.ly/grayscaledonate</string>
+    <string name="night_mode_running">Auto Switch is active right now</string>
+    <string name="edit">edit</string>
 </resources>

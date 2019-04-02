@@ -2,11 +2,13 @@ package com.berenluth.grayscale
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_home.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -15,8 +17,9 @@ import java.util.*
 class HomeActivity : AppCompatActivity() {
 
     var defaultMode: Boolean = false
-    //lateinit var snackbar : Snackbar
-
+    var nightMode: Boolean = false
+    var inTimeWindow: Boolean = false
+    lateinit var snackbar : Snackbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,22 +36,22 @@ class HomeActivity : AppCompatActivity() {
         animateUI(defaultMode)
 
         val end = prefs.getLong(UtilValues.TIMER_END, 0L)
-        val timerMessage = String.format(getString(R.string.timer_is_running), getTimerEnd(end))
+        val timerMessage = String.format(getString(R.string.night_mode_running), getTimerEnd(end))
 
-        val nightMode = prefs.getBoolean(UtilValues.NIGHT_MODE_ENABLED, false)
-        val inTimeWindow = Util.isCurrentTimeInWindow(prefs)
-
-        /*snackbar = Snackbar.make(main_switch, timerMessage, Snackbar.LENGTH_INDEFINITE)
-                .setAction(R.string.stop) { _ -> run{
-                    Util.toggleGreyscale(this, defaultMode)
-                }}*/
+        snackbar = Snackbar.make(main_switch, timerMessage, Snackbar.LENGTH_INDEFINITE)
+                .setAction(R.string.edit) { _ -> run{
+                    startSettingsActivity()
+                }}
 
         //Call this function when the switch is pressed
         main_switch.setOnCheckedChangeListener { _, s ->
             run {
                 if (Util.hasPermission(this)) {
                     defaultMode = s
+
                     val correctState = defaultMode || (nightMode && inTimeWindow)
+
+                    Log.d("HomeActivity", "defaultMode=$defaultMode, nightMode=$nightMode, inTimeWindow=$inTimeWindow, correctState=$correctState")
 
                     Util.toggleGreyscale(this, correctState)
                     animateUI(s)
@@ -75,12 +78,7 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
-        settings_button.setOnClickListener { _ ->
-            run {
-                val i = Intent(this, SettingsActivity::class.java)
-                startActivity(i)
-            }
-        }
+        settings_button.setOnClickListener { _ -> startSettingsActivity() }
 
         need_help.setOnClickListener { _ ->
             run {
@@ -92,8 +90,15 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        if( Util.hasPermission(this) && defaultMode != Util.isGreyscaleEnable(this) ){
-                //snackbar.show()
+
+        val prefs = this.getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE)
+        nightMode = prefs.getBoolean(UtilValues.NIGHT_MODE_ENABLED, false)
+        inTimeWindow = Util.isCurrentTimeInWindow(prefs)
+
+        if( Util.hasPermission(this) && nightMode && inTimeWindow){
+                snackbar.show()
+        } else {
+            snackbar.dismiss()
         }
 
 
@@ -124,5 +129,10 @@ class HomeActivity : AppCompatActivity() {
 
         val format1 = SimpleDateFormat("HH:mm")
         return format1.format(calendar.time)
+    }
+
+    fun startSettingsActivity(){
+        val i = Intent(this, SettingsActivity::class.java)
+        startActivity(i)
     }
 }
