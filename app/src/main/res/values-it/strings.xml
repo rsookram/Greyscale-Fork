@@ -40,4 +40,9 @@
     <string name="donate_link">https://bit.ly/grayscaledonate_ita</string>
     <string name="night_mode_running">Auto Switch è attivo in questo momento</string>
     <string name="edit">modifica</string>
+    <string name="theme">Tema</string>
+    <string name="theme_dark">Scuro</string>
+    <string name="theme_light">Chiaro</string>
+    <string name="theme_set_by_battery">Imposta in base al risparmio energetico</string>
+    <string name="theme_system_default">Default di sistema</string>
 </resources>

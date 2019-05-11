@@ -93,7 +93,6 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        Log.d(TAG, "onResume")
         val prefs = this.getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE)
         nightMode = prefs.getBoolean(UtilValues.NIGHT_MODE_ENABLED, false)
         inTimeWindow = Util.isCurrentTimeInWindow(prefs)
@@ -111,8 +110,11 @@ class HomeActivity : AppCompatActivity() {
         }
 
         val mode = prefs.getInt(UtilValues.DARK_THEME, AppCompatDelegate.MODE_NIGHT_NO)
+
+        Log.d(TAG, "onResume: theme changed")
         AppCompatDelegate.setDefaultNightMode(mode)
         delegate.applyDayNight()
+
     }
 
     fun animateUI(gray: Boolean) {

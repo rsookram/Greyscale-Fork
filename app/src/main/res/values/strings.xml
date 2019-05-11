@@ -46,5 +46,5 @@
     <string name="theme_dark">Dark</string>
     <string name="theme_light">Light</string>
     <string name="theme_system_default">System default</string>
-    <string name="theme_set_by_battery">Set by battery saver (it may not work on old Android versions)</string>
+    <string name="theme_set_by_battery">Set by battery saver</string>
 </resources>

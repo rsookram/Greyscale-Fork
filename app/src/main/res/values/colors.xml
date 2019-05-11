@@ -11,7 +11,7 @@
     <color name="secondary_text">@android:color/secondary_text_light</color>
     <color name="tertiary_text">@android:color/tertiary_text_light</color>
 
-    <color name="background">@android:color/background_light</color>
-    <color name="background_card">#DEDEDE</color>
+    <color name="background">#FBFBFB</color>
+    <color name="background_card">#FEFEFE</color>
 
 </resources>

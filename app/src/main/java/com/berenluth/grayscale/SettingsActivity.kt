@@ -179,7 +179,7 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         radio_theme_light.isChecked = mode == AppCompatDelegate.MODE_NIGHT_NO
         radio_theme_dark.isChecked = mode == AppCompatDelegate.MODE_NIGHT_YES
         radio_theme_other.isChecked = (mode == AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                || (mode == AppCompatDelegate.MODE_NIGHT_AUTO)
+                || (mode == AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
 
         //set listener to change the theme
         radio_group.setOnCheckedChangeListener { group, checkedId ->
@@ -191,7 +191,7 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
                 if(BuildConfig.VERSION_CODE > android.os.Build.VERSION_CODES.P){
                     mode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
                 } else {
-                    mode = AppCompatDelegate.MODE_NIGHT_AUTO
+                    mode = AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
                 }
             }
             AppCompatDelegate.setDefaultNightMode(mode)
