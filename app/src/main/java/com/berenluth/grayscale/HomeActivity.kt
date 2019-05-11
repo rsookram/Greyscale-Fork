@@ -31,6 +31,10 @@ class HomeActivity : AppCompatActivity() {
         val prefs = this.getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE)
         defaultMode = prefs.getBoolean(UtilValues.DEFAULT_MODE, false)
 
+        val mode = prefs.getInt(UtilValues.DARK_THEME, AppCompatDelegate.MODE_NIGHT_NO)
+
+        AppCompatDelegate.setDefaultNightMode(mode)
+        delegate.applyDayNight()
 
         Log.d("HomeActivity", "Default mode = $defaultMode")
 
@@ -103,18 +107,10 @@ class HomeActivity : AppCompatActivity() {
             snackbar.dismiss()
         }
 
-
-        if (!Util.hasPermission(this)){
+        if (!Util.hasPermission(this)) {
             need_help.visibility = View.VISIBLE
             need_help.animate().translationY(0f).duration = 300L
         }
-
-        val mode = prefs.getInt(UtilValues.DARK_THEME, AppCompatDelegate.MODE_NIGHT_NO)
-
-        Log.d(TAG, "onResume: theme changed")
-        AppCompatDelegate.setDefaultNightMode(mode)
-        delegate.applyDayNight()
-
     }
 
     fun animateUI(gray: Boolean) {
