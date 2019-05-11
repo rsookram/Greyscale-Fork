@@ -1,0 +1,25 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <!-- android.R.style.Theme_Material_Light_Dialog_Alert -->
+    <style name="MyDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="buttonBarStyle">@style/Widget.AppCompat.ButtonBar</item>
+        <item name="buttonBarButtonStyle">@style/AppTheme.Button</item>
+        <item name="buttonBarPositiveButtonStyle">@style/AppTheme.Button</item>
+        <item name="buttonBarNegativeButtonStyle">@style/AppTheme.Button</item>
+        <item name="buttonBarNeutralButtonStyle">@style/AppTheme.Button</item>
+    </style>
+
+    <style name="AppTheme.Button" parent="@style/Widget.MaterialComponents.FloatingActionButton">
+        <item name="cornerRadius">30dp</item>
+    </style>
+
+</resources>

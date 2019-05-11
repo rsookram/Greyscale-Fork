@@ -13,6 +13,7 @@ import android.app.TimePickerDialog
 import android.content.SharedPreferences
 import android.util.Log
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatDelegate
 
 
 class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
@@ -72,6 +73,13 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             i.data = Uri.parse(url)
             startActivity(i)
         }
+
+        loadTheme(pref)
+        if(BuildConfig.VERSION_CODE > android.os.Build.VERSION_CODES.P)
+            radio_theme_other.setText(getString(R.string.theme_system_default))
+        else
+            radio_theme_other.setText(getString(R.string.theme_set_by_battery))
+
     }
 
     private fun updateTimeSchedule() {
@@ -164,5 +172,32 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
         night_mode_time_2.setText(startString)
         night_mode_time_4.setText(endString)
+    }
+
+    private fun loadTheme(pref: SharedPreferences){
+        var mode = pref.getInt(UtilValues.DARK_THEME, AppCompatDelegate.MODE_NIGHT_NO)
+        radio_theme_light.isChecked = mode == AppCompatDelegate.MODE_NIGHT_NO
+        radio_theme_dark.isChecked = mode == AppCompatDelegate.MODE_NIGHT_YES
+        radio_theme_other.isChecked = (mode == AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                || (mode == AppCompatDelegate.MODE_NIGHT_AUTO)
+
+        //set listener to change the theme
+        radio_group.setOnCheckedChangeListener { group, checkedId ->
+
+            var mode = 0
+            if(checkedId == radio_theme_light.id) mode = AppCompatDelegate.MODE_NIGHT_NO
+            if(checkedId == radio_theme_dark.id) mode = AppCompatDelegate.MODE_NIGHT_YES
+            if(checkedId == radio_theme_other.id){
+                if(BuildConfig.VERSION_CODE > android.os.Build.VERSION_CODES.P){
+                    mode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+                } else {
+                    mode = AppCompatDelegate.MODE_NIGHT_AUTO
+                }
+            }
+            AppCompatDelegate.setDefaultNightMode(mode)
+            delegate.applyDayNight()
+            pref.edit().putInt(UtilValues.DARK_THEME, mode).apply()
+            Log.d(TAG, "theme mode $mode")
+        }
     }
 }

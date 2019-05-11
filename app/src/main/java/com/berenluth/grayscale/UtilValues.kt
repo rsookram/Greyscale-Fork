@@ -29,5 +29,7 @@ class UtilValues{
 
         const val NIGHT_MODE_END_HH = "night_mode_end_hh"       //int between 0 and 23
         const val NIGHT_MODE_END_MM = "night_mode_end_mm"       //Int between 0 and 59
+
+        const val DARK_THEME = "dark_theme"
     }
 }

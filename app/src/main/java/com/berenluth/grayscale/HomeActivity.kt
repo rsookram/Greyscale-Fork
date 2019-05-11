@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_home.*
 import java.text.SimpleDateFormat
@@ -15,6 +16,7 @@ import java.util.*
 
 
 class HomeActivity : AppCompatActivity() {
+    val TAG = "HomeActivity"
 
     var defaultMode: Boolean = false
     var nightMode: Boolean = false
@@ -28,6 +30,7 @@ class HomeActivity : AppCompatActivity() {
         //Read the user saved preference
         val prefs = this.getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE)
         defaultMode = prefs.getBoolean(UtilValues.DEFAULT_MODE, false)
+
 
         Log.d("HomeActivity", "Default mode = $defaultMode")
 
@@ -90,7 +93,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
+        Log.d(TAG, "onResume")
         val prefs = this.getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE)
         nightMode = prefs.getBoolean(UtilValues.NIGHT_MODE_ENABLED, false)
         inTimeWindow = Util.isCurrentTimeInWindow(prefs)
@@ -106,6 +109,10 @@ class HomeActivity : AppCompatActivity() {
             need_help.visibility = View.VISIBLE
             need_help.animate().translationY(0f).duration = 300L
         }
+
+        val mode = prefs.getInt(UtilValues.DARK_THEME, AppCompatDelegate.MODE_NIGHT_NO)
+        AppCompatDelegate.setDefaultNightMode(mode)
+        delegate.applyDayNight()
     }
 
     fun animateUI(gray: Boolean) {
