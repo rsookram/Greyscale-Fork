@@ -75,7 +75,7 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         }
 
         loadTheme(pref)
-        if(BuildConfig.VERSION_CODE > android.os.Build.VERSION_CODES.P)
+        if(android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.P)
             radio_theme_other.setText(getString(R.string.theme_system_default))
         else
             radio_theme_other.setText(getString(R.string.theme_set_by_battery))
@@ -175,6 +175,10 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
     }
 
     private fun loadTheme(pref: SharedPreferences){
+        //Theme function not working on android <= M, let's hide the section "theme"
+        if(android.os.Build.VERSION.SDK_INT <= android.os.Build.VERSION_CODES.M)
+            cardview_theme.visibility = View.GONE
+
         var mode = pref.getInt(UtilValues.DARK_THEME, AppCompatDelegate.MODE_NIGHT_NO)
         radio_theme_light.isChecked = mode == AppCompatDelegate.MODE_NIGHT_NO
         radio_theme_dark.isChecked = mode == AppCompatDelegate.MODE_NIGHT_YES
@@ -188,7 +192,7 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             if(checkedId == radio_theme_light.id) mode = AppCompatDelegate.MODE_NIGHT_NO
             if(checkedId == radio_theme_dark.id) mode = AppCompatDelegate.MODE_NIGHT_YES
             if(checkedId == radio_theme_other.id){
-                if(BuildConfig.VERSION_CODE > android.os.Build.VERSION_CODES.P){
+                if(android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.P){
                     mode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
                 } else {
                     mode = AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
