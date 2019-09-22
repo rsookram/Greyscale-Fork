@@ -20,6 +20,7 @@
 
     <style name="AppTheme.Button" parent="@style/Widget.MaterialComponents.FloatingActionButton">
         <item name="cornerRadius">30dp</item>
+        <item name="backgroundTint">@color/colorAccent</item>
     </style>
 
 </resources>

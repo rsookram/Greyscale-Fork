@@ -95,7 +95,9 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:layout_marginEnd="32dp"
+                    >
 
                     <TextView
                         android:id="@+id/text_toggle_duration"
@@ -107,8 +109,8 @@
                         android:text="@string/toggle_duration"
                         android:textColor="@color/secondary_text"
                         android:textSize="@dimen/text_title"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/text_toggle_explanation"
@@ -117,10 +119,10 @@
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:text="@string/toggle_explanation"
+                        android:textColor="@color/tertiary_text"
                         android:textSize="@dimen/text_small"
-                        app:layout_constraintTop_toBottomOf="@id/text_toggle_duration"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:textColor="@color/tertiary_text"/>
+                        app:layout_constraintTop_toBottomOf="@id/text_toggle_duration" />
 
                     <SeekBar
                         android:id="@+id/seekBar"
@@ -139,9 +141,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/save"
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/seekBar"
-                        android:visibility="gone"/>
+                        app:layout_constraintTop_toBottomOf="@id/seekBar" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -159,11 +161,11 @@
                 app:layout_constraintTop_toBottomOf="@id/cardview_seekbar"
                 app:cardBackgroundColor="@color/background_card">
 
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:layout_marginEnd="32dp">
 
                     <TextView
                         android:id="@+id/night_mode_title"
@@ -267,7 +269,8 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:layout_marginEnd="32dp">
 
                     <TextView
                         android:id="@+id/text_theme_title"
@@ -317,6 +320,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_user_guide"
                 style="@style/AppTheme.Button"
+                android:backgroundTint="@color/colorAccent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
