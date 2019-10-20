@@ -343,22 +343,7 @@
                 app:drawableTopCompat="@drawable/ic_share_black_24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/button_user_guide"
-                app:layout_constraintEnd_toStartOf="@id/button_donate"
-                android:layout_margin="16dp"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:visibility="visible"
-                android:id="@+id/button_donate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="?android:selectableItemBackgroundBorderless"
-                android:contentDescription="@string/donate_button_description"
-                android:text="@string/donate_button_text"
-                app:drawableTopCompat="@drawable/ic_heart_red"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/button_share"
-                app:layout_constraintStart_toEndOf="@id/button_share"
-                app:layout_constraintBottom_toBottomOf="@id/button_share"
                 android:layout_margin="16dp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -66,14 +66,6 @@ class SettingsActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             startActivity(Intent.createChooser(sendIntent, getString(R.string.choose_one)))
         }
 
-        //button_donate.visibility = View.GONE
-        button_donate.setOnClickListener { _ ->
-            val url = getString(R.string.donate_link)
-            val i = Intent(Intent.ACTION_VIEW)
-            i.data = Uri.parse(url)
-            startActivity(i)
-        }
-
         loadTheme(pref)
         if(android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.P)
             radio_theme_other.setText(getString(R.string.theme_system_default))
