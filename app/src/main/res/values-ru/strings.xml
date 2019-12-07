@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
+    <string name="app_name">Grayscale+</string>
+    <string name="guide_website">https://github.com/BerenLuth/Greyscale/blob/master/user_guides/en_guide.md</string>
+    <string name="tips_title">Необходимо разрешение!</string>
+    <string name="tips_ok">OK</string>
+    <string name="tips_copy">КОПИРОВАТЬ</string>
+    <string name="copy_done">Скопировано</string>
+    <string name="tips">Перед использованием этого приложения вы должны предоставить разрешение с помощью инструментов adb, скопируйте приведенную ниже команду и выполните ее на ПК:\n\n%1$s\n\n В качестве альтернативы вы можете использовать root для предоставления разрешения.</string>
+    <string name="root_failure">root-права не предоставлены</string>
+    <string name="lorem_ipsum" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+    <string name="off" translatable="false">OFF</string>
+    <string name="on" translatable="false">ON</string>
+    <string name="title_default">Default</string>
+    <string name="off_description">Нормальный режим отображения\nИспользуйте быстрое переключение, чтобы временно включить режим Grayscale+</string>
+    <string name="on_description">Режим отображения Grayscale+\nИспользуйте быстрое переключение, чтобы временно включить режим Grayscale+</string>
+    <string name="toggle_duration">Таймер для быстрого переключения: %1$d %2$s</string>
+    <string name="minutes">минут</string>
+    <string name="hours">часов</string>
+    <string name="toggle_explanation">Нажав на переключатель на панели уведомлений, вы включите/отключите Grayscale+ на указанное количество времени.</string>
+    <string name="app_info">Приложение разработано Fabio Rosada, художник Natalia Petliak.\n\nВы можете найти исходный код на GitHub https://github.com/BerenLuth/Greyscale\n\n. Это приложение является форком приложения Greyscale, созданного Fei-ke, вы можете найти его здесь https://github.com/fei-ke/Greyscale</string>
+    <string name="save">Сохранить</string>
+    <string name="preferences_saved">Настройки сохранены</string>
+    <string name="quik_toggles_help">Переключатели быстрых настроек расположены в верхней части панели уведомлений. Обычно для их редактирования есть кнопка. Вы можете использовать ее, чтобы найти и добавить Grayscale+</string>
+    <string name="stop">Остановить сейчас</string>
+    <string name="timer_auto_stopped">Таймер автоматически остановлен</string>
+    <string name="timer_is_running">Таймер работает до %1$s</string>
+    <string name="timer_activated">Таймер установлен до %1$d %2$s</string>
+    <string name="timer_deleted">Таймер удалён</string>
+    <string name="need_help">Нужна помощь?</string>
+    <string name="user_guide">Руководство пользователя</string>
+    <string name="night_mode">Автоматическое переключение</string>
+    <string name="night_mode_explanation">Вы можете выбрать период времени для автоматического включения Grayscale+ (если режим по умолчанию выключен).</string>
+    <string name="night_mode_nopermission">Эта функция не будет работать, пока вы не предоставите разрешение на активацию Grayscale+.</string>
+    <string name="share_button_description">Поделитесь приложением с друзьями</string>
+    <string name="share_app_text">Grayscale+ позволяет установить на телефоне фильтр оттенков серого, загрузив его c https://play.google.com/store/apps/details?id=com.berenluth.grayscale</string>
+    <string name="choose_one">Отправить…</string>
+    <string name="activate_between">Активировать между</string>
+    <string name="activate_until">и</string>
+    <string name="share_button_text">Поделиться</string>
+    <string name="night_mode_running">Автопереключение сейчас работает</string>
+    <string name="edit">редактировать</string>
+    <string name="theme">Тема</string>
+    <string name="theme_dark">Тёмная</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_system_default">По умолчанию</string>
+    <string name="theme_set_by_battery">Устанавливается с экономией энергии</string>
+</resources>
