@@ -103,7 +103,6 @@
                         android:id="@+id/text_toggle_duration"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:lines="1"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:text="@string/toggle_duration"
@@ -167,29 +166,31 @@
                     android:padding="16dp"
                     android:layout_marginEnd="32dp">
 
-                    <TextView
-                        android:id="@+id/night_mode_title"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/night_mode_title_layout"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:lines="1"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:text="@string/night_mode"
-                        android:textColor="@color/secondary_text"
-                        android:textSize="@dimen/text_title"
-                        app:layout_constraintEnd_toStartOf="@id/night_mode_switch"
-                        app:layout_constraintHorizontal_chainStyle="spread_inside"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        android:orientation="horizontal">
 
-                    <Switch
-                        android:checked="false"
-                        android:id="@+id/night_mode_switch"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/night_mode_title"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        <TextView
+                            android:id="@+id/night_mode_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:text="@string/night_mode"
+                            android:textColor="@color/secondary_text"
+                            android:textSize="@dimen/text_title"
+                            android:layout_weight="4"/>
+
+                        <Switch
+                            android:checked="false"
+                            android:id="@+id/night_mode_switch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/night_mode_explanation"
@@ -200,8 +201,8 @@
                         android:paddingTop="4dp"
                         android:text="@string/night_mode_explanation"
                         android:textSize="@dimen/text_small"
-                        app:layout_constraintTop_toBottomOf="@id/night_mode_title"
-                        app:layout_constraintStart_toStartOf="@id/night_mode_title"
+                        app:layout_constraintTop_toBottomOf="@id/night_mode_title_layout"
+                        app:layout_constraintStart_toStartOf="@id/night_mode_title_layout"
                         android:textColor="@color/tertiary_text"/>
 
                     <TextView

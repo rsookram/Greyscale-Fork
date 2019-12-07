@@ -19,7 +19,7 @@
     <string name="minutes">минут</string>
     <string name="hours">часов</string>
     <string name="toggle_explanation">Нажав на переключатель на панели уведомлений, вы включите/отключите Grayscale+ на указанное количество времени.</string>
-    <string name="app_info">Приложение разработано Fabio Rosada, художник Natalia Petliak.\n\nВы можете найти исходный код на GitHub https://github.com/BerenLuth/Greyscale\n\n. Это приложение является форком приложения Greyscale, созданного Fei-ke, вы можете найти его здесь https://github.com/fei-ke/Greyscale</string>
+    <string name="app_info">Приложение разработано Fabio Rosada, художница Natalia Petliak.\n\nВы можете найти исходный код на GitHub https://github.com/BerenLuth/Greyscale\n\n. Это приложение является форком приложения Greyscale, созданного Fei-ke, вы можете найти его здесь https://github.com/fei-ke/Greyscale</string>
     <string name="save">Сохранить</string>
     <string name="preferences_saved">Настройки сохранены</string>
     <string name="quik_toggles_help">Переключатели быстрых настроек расположены в верхней части панели уведомлений. Обычно для их редактирования есть кнопка. Вы можете использовать ее, чтобы найти и добавить Grayscale+</string>
