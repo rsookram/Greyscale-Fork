@@ -14,8 +14,9 @@ class AlarmReceiver : BroadcastReceiver() {
     val TAG = "AlarmReceiver"
 
     override fun onReceive(p0: Context?, p1: Intent?) {
-        if (p0 != null && p1 != null && p1.action != null) {
-            Log.d(TAG, "Action::" + p1.action)
+        val intentAction = p1?.action
+        if (p0 != null && p1 != null && intentAction != null) {
+            Log.d(TAG, "Action::" + intentAction)
 
             val prefs = p0.getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE)
             val defaultMode = prefs.getBoolean(UtilValues.DEFAULT_MODE, false)
@@ -28,7 +29,7 @@ class AlarmReceiver : BroadcastReceiver() {
             val intentNightID = p1.getIntExtra(UtilValues.ALARM_NIGHT_MODE_ID, 0)
             Log.d(TAG, "Night id in the preferences=$prefNightID, id received=$intentNightID")
 
-            val action = p1.action.toLowerCase()
+            val action = intentAction.toLowerCase()
 
             /**Boot completed**/
             if (action == Intent.ACTION_BOOT_COMPLETED.toLowerCase()) {
