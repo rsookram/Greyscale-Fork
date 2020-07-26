@@ -29,7 +29,7 @@
     <string name="night_mode_explanation">Puoi selezionare una finestra di tempo nella quale attivare grayscale automaticamente (Se la modalità di default è OFF).</string>
     <string name="night_mode_nopermission">Questa funzione non funzionerà fino a quando non attiverai il permesso per attivare grayscale.</string>
     <string name="night_mode">Auto Switch</string>
-    <string name="share_app_text">Grayscale+ mette un filtro in bianco e nero sul tuo telefono, scaricala da https://play.google.com/store/apps/details?id=com.berenluth.grayscale</string>
+    <string name="share_app_text">Grayscale+ mette un filtro in bianco e nero sul tuo telefono</string>
     <string name="share_button_description">Condividi quest\'app con gli amic</string>
     <string name="choose_one">Invia a…</string>
     <string name="activate_between">Attiva dalle</string>

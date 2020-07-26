@@ -1,4 +1,4 @@
-package com.berenluth.grayscale
+package io.github.rsookram.greyscale
 
 import android.content.Context
 import android.content.Intent

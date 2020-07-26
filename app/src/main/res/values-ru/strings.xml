@@ -34,7 +34,7 @@
     <string name="night_mode_explanation">Вы можете выбрать период времени для автоматического включения Grayscale+ (если режим по умолчанию выключен).</string>
     <string name="night_mode_nopermission">Эта функция не будет работать, пока вы не предоставите разрешение на активацию Grayscale+.</string>
     <string name="share_button_description">Поделитесь приложением с друзьями</string>
-    <string name="share_app_text">Grayscale+ позволяет установить на телефоне фильтр оттенков серого, загрузив его c https://play.google.com/store/apps/details?id=com.berenluth.grayscale</string>
+    <string name="share_app_text">Grayscale+ позволяет установить на телефоне фильтр оттенков серого</string>
     <string name="choose_one">Отправить…</string>
     <string name="activate_between">Активировать между</string>
     <string name="activate_until">и</string>

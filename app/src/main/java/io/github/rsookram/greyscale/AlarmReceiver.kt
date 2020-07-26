@@ -1,4 +1,4 @@
-package com.berenluth.grayscale
+package io.github.rsookram.greyscale
 
 import android.content.BroadcastReceiver
 import android.content.Context
