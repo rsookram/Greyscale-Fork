@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="MissingTranslation">
-    <string name="app_name">Grayscale+</string>
+    <string name="app_name">Greyscale+</string>
     <string name="guide_website">https://github.com/BerenLuth/Greyscale/blob/master/user_guides/en_guide.md</string>
     <string name="tips_title">Need Permission!</string>
     <string name="tips_ok">OK</string>
@@ -12,8 +12,8 @@
     <string name="off" translatable="false">OFF</string>
     <string name="on" translatable="false">ON</string>
     <string name="title_default">Default</string>
-    <string name="off_description">Normal display mode\nUse quick toggle to temporarily enable grayscale mode</string>
-    <string name="on_description">Grayscale display mode\nUse quick toggle to temporarily enable normal mode</string>
+    <string name="off_description">Normal display mode\nUse quick toggle to temporarily enable greyscale mode</string>
+    <string name="on_description">Greyscale display mode\nUse quick toggle to temporarily enable normal mode</string>
     <string name="toggle_duration">Quick toggle timer: %1$d %2$s</string>
     <string name="minutes">minutes</string>
     <string name="hours">hours</string>

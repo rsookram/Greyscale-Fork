@@ -113,11 +113,11 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    fun animateUI(gray: Boolean) {
+    fun animateUI(grey: Boolean) {
         val animationScale = 175L
         val scaleFactor = 0.8f
 
-        if(gray) {
+        if(grey) {
             switch_on.animate().scaleX(1f).scaleY(1f).duration = animationScale
             switch_off.animate().scaleX(scaleFactor).scaleY(scaleFactor).duration = animationScale
 
