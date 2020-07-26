@@ -2,11 +2,6 @@
 
     <string name="app_name">Greyscale+</string>
 
-    <string name="tips_title">Need Permission!</string>
-    <string name="tips">Before using this application, you have to grant permission with adb tools, copy the command below and execute it on PC:\n\n%1$s\n\nAlternatively you can use root to grant permission.</string>
-    <string name="tips_ok">OK</string>
-    <string name="tips_copy">COPY</string>
-    <string name="copy_done">Copy Success</string>
-    <string name="root_failure">root permission not granted</string>
+    <string name="no_permission">WRITE_SECURE_SETTINGS permission must be granted through adb</string>
 
 </resources>

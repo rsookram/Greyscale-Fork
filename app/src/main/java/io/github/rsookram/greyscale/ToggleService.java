@@ -2,6 +2,7 @@ package io.github.rsookram.greyscale;
 
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
+import android.widget.Toast;
 
 public class ToggleService extends TileService {
 
@@ -10,7 +11,7 @@ public class ToggleService extends TileService {
         super.onClick();
 
         if (!Util.hasPermission(this)) {
-            showDialog(Util.createTipsDialog(this));
+            Toast.makeText(this, R.string.no_permission, Toast.LENGTH_LONG).show();
             return;
         }
 
