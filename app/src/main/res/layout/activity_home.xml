@@ -7,16 +7,6 @@
     tools:context=".HomeActivity"
     android:background="@color/background">
 
-    <ImageButton
-        android:id="@+id/settings_button"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="?selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_settings_black_24dp"
-        app:layout_constraintBottom_toBottomOf="@id/icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/icon"/>
-
     <ImageView
         android:id="@+id/icon"
         android:layout_width="wrap_content"

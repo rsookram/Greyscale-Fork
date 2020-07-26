@@ -21,7 +21,6 @@ class HomeActivity : AppCompatActivity() {
     var defaultMode: Boolean = false
     var nightMode: Boolean = false
     var inTimeWindow: Boolean = false
-    lateinit var snackbar : Snackbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,11 +44,6 @@ class HomeActivity : AppCompatActivity() {
         val end = prefs.getLong(UtilValues.TIMER_END, 0L)
         val timerMessage = String.format(getString(R.string.night_mode_running), getTimerEnd(end))
 
-        snackbar = Snackbar.make(main_switch, timerMessage, Snackbar.LENGTH_INDEFINITE)
-                .setAction(R.string.edit) { _ -> run{
-                    startSettingsActivity()
-                }}
-
         //Call this function when the switch is pressed
         main_switch.setOnCheckedChangeListener { _, s ->
             run {
@@ -66,11 +60,6 @@ class HomeActivity : AppCompatActivity() {
                     //Update user's preference with the new default mode
                     prefs.edit().putBoolean(UtilValues.DEFAULT_MODE, s).apply()
                     Log.d("HomeActivity", "Default_mode changed in: $s")
-
-                    /*if(snackbar.isShown) {
-                        snackbar.dismiss()
-                        Snackbar.make(main_switch, R.string.timer_auto_stopped, Snackbar.LENGTH_SHORT).show()
-                    }*/
                 }
 
                 //Show dialog fragment if app doesn't have permissions
@@ -85,8 +74,6 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
-        settings_button.setOnClickListener { _ -> startSettingsActivity() }
-
         need_help.setOnClickListener { _ ->
             run {
                 val browserIntent = Intent("android.intent.action.VIEW", Uri.parse(getString(R.string.guide_website)))
@@ -100,12 +87,6 @@ class HomeActivity : AppCompatActivity() {
         val prefs = this.getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE)
         nightMode = prefs.getBoolean(UtilValues.NIGHT_MODE_ENABLED, false)
         inTimeWindow = Util.isCurrentTimeInWindow(prefs)
-
-        if( Util.hasPermission(this) && nightMode && inTimeWindow){
-                snackbar.show()
-        } else {
-            snackbar.dismiss()
-        }
 
         if (!Util.hasPermission(this)) {
             need_help.visibility = View.VISIBLE
@@ -134,10 +115,5 @@ class HomeActivity : AppCompatActivity() {
 
         val format1 = SimpleDateFormat("HH:mm")
         return format1.format(calendar.time)
-    }
-
-    fun startSettingsActivity(){
-        val i = Intent(this, SettingsActivity::class.java)
-        startActivity(i)
     }
 }
