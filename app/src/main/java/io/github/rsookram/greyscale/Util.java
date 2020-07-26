@@ -1,16 +1,13 @@
 package io.github.rsookram.greyscale;
 
-import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.provider.Settings.Secure;
@@ -23,11 +20,11 @@ import java.util.Date;
 
 public class Util {
     private static final String PERMISSION = "android.permission.WRITE_SECURE_SETTINGS";
-    private static final String COMMAND    = "adb shell pm grant " + BuildConfig.APPLICATION_ID + " " + PERMISSION;
-    private static final String SU_COMMAND = "pm grant " + BuildConfig.APPLICATION_ID + " " + PERMISSION ;
+    private static final String COMMAND = "adb shell pm grant " + BuildConfig.APPLICATION_ID + " " + PERMISSION;
+    private static final String SU_COMMAND = "pm grant " + BuildConfig.APPLICATION_ID + " " + PERMISSION;
 
     private static final String DISPLAY_DALTONIZER_ENABLED = "accessibility_display_daltonizer_enabled";
-    private static final String DISPLAY_DALTONIZER         = "accessibility_display_daltonizer";
+    private static final String DISPLAY_DALTONIZER = "accessibility_display_daltonizer";
 
     public static boolean hasPermission(Context context) {
         return context.checkCallingOrSelfPermission(PERMISSION) == PackageManager.PERMISSION_GRANTED;
@@ -81,52 +78,7 @@ public class Util {
         Secure.putInt(contentResolver, DISPLAY_DALTONIZER, greyscale ? 0 : -1);
     }
 
-    public static int codeToMinutes(int x){
-        switch (x){
-            case 0:
-                return 15;
-            case 1:
-                return 30;
-            case 2:
-                return 60;
-            case 3:
-                return 2*60;
-            case 4:
-                return 4*60;
-            case 5:
-                return 8*60;
-            default:
-                return 30;
-        }
-    }
-
-    public static int codeToTime(int x){
-        switch (x){
-            case 0:
-                return 15;
-            case 1:
-                return 30;
-            case 2:
-                return 60;
-            case 3:
-                return 2;
-            case 4:
-                return 4;
-            case 5:
-                return 8;
-            default:
-                return 30;
-        }
-    }
-
-    public static int codeToMinutesOrHours(int x){
-        if( x < 3)
-            return R.string.minutes;
-        else
-            return R.string.hours;
-    }
-
-    public static boolean isCurrentTimeInWindow(SharedPreferences prefs){
+    public static boolean isCurrentTimeInWindow(SharedPreferences prefs) {
         int startHH = prefs.getInt(UtilValues.NIGHT_MODE_START_HH, 22);
         int startMM = prefs.getInt(UtilValues.NIGHT_MODE_START_MM, 0);
         int endHH = prefs.getInt(UtilValues.NIGHT_MODE_END_HH, 7);
@@ -135,7 +87,7 @@ public class Util {
         return isCurrentTimeInWindow(startHH, startMM, endHH, endMM);
     }
 
-    public static boolean isCurrentTimeInWindow(int startHH, int startMM, int endHH, int endMM){
+    public static boolean isCurrentTimeInWindow(int startHH, int startMM, int endHH, int endMM) {
         Calendar c = Calendar.getInstance();    //Current time
 
         Date currentDate = new Date(c.getTimeInMillis());
@@ -154,66 +106,10 @@ public class Util {
 
         Log.d("DATE TEST", "dates equal" + startDate.before(startDate));
 
-        if( startDate.before(endDate)) {
+        if (startDate.before(endDate)) {
             return (!currentDate.before(startDate)) && currentDate.before(endDate);
         } else {
             return !((!currentDate.before(endDate)) && currentDate.before(startDate));
-        }
-    }
-
-    public static void setAlarmNightMode(boolean start, Context context){
-        Log.d("Util", "setAlarmNightMode for start: " + start);
-        SharedPreferences pref = context.getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE);
-
-        int startHH = pref.getInt(UtilValues.NIGHT_MODE_START_HH, 22);
-        int startMM = pref.getInt(UtilValues.NIGHT_MODE_START_MM, 0);
-        int endHH = pref.getInt(UtilValues.NIGHT_MODE_END_HH, 7);
-        int endMM = pref.getInt(UtilValues.NIGHT_MODE_END_MM, 0);
-        int nightID = pref.getInt(UtilValues.ALARM_NIGHT_MODE_ID, 0);
-
-        Intent i = new Intent(context, AlarmReceiver.class);
-        i.putExtra(UtilValues.ALARM_NIGHT_MODE_ID, nightID);
-
-        //Setting an alarm that will start the night mode
-        if(start){
-            i.setAction(UtilValues.ACTION_NIGHT_MODE_START);
-
-            PendingIntent sender = PendingIntent.getBroadcast(context, 1, i, PendingIntent.FLAG_CANCEL_CURRENT);
-
-            Calendar cal = Calendar.getInstance();
-            cal.set(Calendar.HOUR_OF_DAY, startHH);
-            cal.set(Calendar.MINUTE, startMM);
-            cal.set(Calendar.SECOND, 0);
-
-            //If the start is before now, it means that it's in the next day
-            if( cal.before(Calendar.getInstance()) )
-                cal.add(Calendar.DAY_OF_YEAR, 1);
-
-            Log.d("Util", "alarmManager for night mode start for " + cal.toString());
-
-            AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-            am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), sender);
-        }
-
-        //Setting an alarm that will stop the night mode
-        else {
-            i.setAction(UtilValues.ACTION_NIGHT_MODE_END);
-
-            PendingIntent sender = PendingIntent.getBroadcast(context, 1, i, PendingIntent.FLAG_CANCEL_CURRENT);
-
-            Calendar cal = Calendar.getInstance();
-            cal.set(Calendar.HOUR_OF_DAY, endHH);
-            cal.set(Calendar.MINUTE, endMM);
-            cal.set(Calendar.SECOND, 0);
-
-            //If the end is before now, it means that it's in the next day
-            if( cal.before(Calendar.getInstance()) )
-                cal.add(Calendar.DAY_OF_YEAR, 1);
-
-            Log.d("Util", "alarmManager for night mode start for " + cal.toString());
-
-            AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-            am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), sender);
         }
     }
 }
