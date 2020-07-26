@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+
 android {
+
     compileSdkVersion 29
 
     defaultConfig {
@@ -11,6 +11,7 @@ android {
         versionCode 16
         versionName "1.5.2"
     }
+
     signingConfigs {
         release {
             storeFile file(STORE_FILE_PATH)
@@ -20,6 +21,7 @@ android {
 
         }
     }
+
     buildTypes {
         release {
             minifyEnabled true
@@ -28,13 +30,4 @@ android {
             signingConfig signingConfigs.release
         }
     }
-    productFlavors {
-    }
-}
-
-dependencies {
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta8'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.google.android.material:material:1.1.0'
 }
