@@ -6,35 +6,34 @@ import android.widget.Toast;
 
 public class ToggleService extends TileService {
 
+    private final GreyscaleSetting greyscaleSetting = new GreyscaleSetting(this);
+
     @Override
     public void onClick() {
         super.onClick();
 
-        if (!Util.hasPermission(this)) {
+        if (!greyscaleSetting.canChange()) {
             Toast.makeText(this, R.string.no_permission, Toast.LENGTH_LONG).show();
             return;
         }
 
-        int oldState = getQsTile().getState();
-        if (oldState == Tile.STATE_ACTIVE) {
-            setState(Tile.STATE_INACTIVE);
-        } else {
-            setState(Tile.STATE_ACTIVE);
-        }
+        boolean enable = getQsTile().getState() == Tile.STATE_INACTIVE;
 
-        Util.toggleGreyscale(this, oldState == Tile.STATE_INACTIVE);
-    }
-
-    private void setState(int state) {
-        Tile tile = getQsTile();
-        tile.setState(state);
-        tile.updateTile();
+        greyscaleSetting.setEnabled(enable);
+        setTileState(enable ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
     }
 
     @Override
     public void onStartListening() {
         super.onStartListening();
-        boolean greyscaleEnable = Util.isGreyscaleEnable(this);
-        setState(greyscaleEnable ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
+
+        boolean enabled = greyscaleSetting.isEnabled();
+        setTileState(enabled ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
+    }
+
+    private void setTileState(int state) {
+        Tile tile = getQsTile();
+        tile.setState(state);
+        tile.updateTile();
     }
 }
