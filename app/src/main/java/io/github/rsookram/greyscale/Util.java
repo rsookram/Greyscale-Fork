@@ -8,15 +8,11 @@ import android.content.ClipboardManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.provider.Settings.Secure;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.io.DataOutputStream;
-import java.util.Calendar;
-import java.util.Date;
 
 public class Util {
     private static final String PERMISSION = "android.permission.WRITE_SECURE_SETTINGS";
@@ -76,40 +72,5 @@ public class Util {
         ContentResolver contentResolver = context.getContentResolver();
         Secure.putInt(contentResolver, DISPLAY_DALTONIZER_ENABLED, greyscale ? 1 : 0);
         Secure.putInt(contentResolver, DISPLAY_DALTONIZER, greyscale ? 0 : -1);
-    }
-
-    public static boolean isCurrentTimeInWindow(SharedPreferences prefs) {
-        int startHH = prefs.getInt(UtilValues.NIGHT_MODE_START_HH, 22);
-        int startMM = prefs.getInt(UtilValues.NIGHT_MODE_START_MM, 0);
-        int endHH = prefs.getInt(UtilValues.NIGHT_MODE_END_HH, 7);
-        int endMM = prefs.getInt(UtilValues.NIGHT_MODE_END_MM, 0);
-
-        return isCurrentTimeInWindow(startHH, startMM, endHH, endMM);
-    }
-
-    public static boolean isCurrentTimeInWindow(int startHH, int startMM, int endHH, int endMM) {
-        Calendar c = Calendar.getInstance();    //Current time
-
-        Date currentDate = new Date(c.getTimeInMillis());
-        Date startDate = new Date(c.getTimeInMillis()); //start date initialized from current time
-        Date endDate = new Date(c.getTimeInMillis());   //end date initialized from current time
-
-        //Set selected hours and minutes to the start date
-        startDate.setHours(startHH);
-        startDate.setMinutes(startMM);
-        startDate.setSeconds(0);
-
-        //Set selected hours and minutes to the end date
-        endDate.setHours(endHH);
-        endDate.setMinutes(endMM);
-        endDate.setSeconds(0);
-
-        Log.d("DATE TEST", "dates equal" + startDate.before(startDate));
-
-        if (startDate.before(endDate)) {
-            return (!currentDate.before(startDate)) && currentDate.before(endDate);
-        } else {
-            return !((!currentDate.before(endDate)) && currentDate.before(startDate));
-        }
     }
 }

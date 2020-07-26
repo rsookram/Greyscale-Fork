@@ -1,8 +1,6 @@
 package io.github.rsookram.greyscale;
 
 import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
@@ -26,20 +24,8 @@ public class ToggleService extends TileService {
             setState(Tile.STATE_ACTIVE);
         }
 
-        SharedPreferences pref = getSharedPreferences(UtilValues.GENERAL_PREFERENCES, Context.MODE_PRIVATE);
-
-        boolean defaultMode = pref.getBoolean(UtilValues.DEFAULT_MODE, false);
-        boolean nightMode = pref.getBoolean(UtilValues.NIGHT_MODE_ENABLED, false);
-        boolean inTimeWindow = Util.isCurrentTimeInWindow(pref);
-
-        boolean currentState = defaultMode || (nightMode && inTimeWindow);
-
-        //If the current state is different from the default state, it means that a timer is running
-        boolean isTimerSet = currentState != Util.isGreyscaleEnable(this);
-
         Util.toggleGreyscale(this, oldState == Tile.STATE_INACTIVE);
     }
-
 
     private void setState(int state) {
         Tile tile = getQsTile();
