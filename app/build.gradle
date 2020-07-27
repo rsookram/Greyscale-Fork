@@ -28,7 +28,7 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles 'proguard-rules.pro'
 
             // Just for testing release builds. Not actually distributed.
             signingConfig signingConfigs.debug
