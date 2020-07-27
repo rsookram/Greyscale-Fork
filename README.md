@@ -22,4 +22,4 @@ Once you have adb correctly installed in your computer you're almost done, what 
 
     adb shell pm grant io.github.rsookram.greyscale android.permission.WRITE_SECURE_SETTINGS
 
-You're done, enjoy Greyscale+!
+You're done, enjoy Greyscale!
