@@ -4,7 +4,7 @@ import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import android.widget.Toast;
 
-public class ToggleService extends TileService {
+public class GreyscaleTileService extends TileService {
 
     private final GreyscaleSetting greyscaleSetting = new GreyscaleSetting(this);
 
