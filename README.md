@@ -1,25 +1,52 @@
 # Greyscale
 
-# User Guide
-In order to be able to use this app properly, you should grant special permission via **ADB** or **ROOT**.
-
-## Why?
-Instead of the app constantly running in the background and drain the battery, we prefer to use a simple option that is already in all Android devices, hidden in ```Settings > Developer Option > Simulate color space```, however, this is really uncomfortable if you want to switch between normal and greyscale many times.\
-Since this function is part of the Android OS and not a normal option available to developers, it requires special permission.
+Greyscale is a quick settings tile for Android which allows you to toggle a
+device between colour display and greyscale.
 
 
-## How?
-#### Root
-If your phone is rooted it's actually pretty simple, you just have to press the **root** button that will appear in the popup when you try to enable the greyscale.
-#### ADB
-ADB (Android Debug Bridge) is a tool that everyone can download, and it allows you to send special commands from your computer to your phone (usually via USB cable).
+## Screenshots
 
-Here's the official page of [Android Debug Bridge](https://developer.android.com/studio/command-line/adb).
+<img src="screenshots/screenshot.png" width="270" height="480" align="left">
+<img src="screenshots/screenshot_2.png" width="270" height="480">
 
-And here's a complete guide to installing it on MacOS, Windows or Linux: [XDA - How to install adb](https://www.xda-developers.com/install-adb-windows-macos-linux/).
 
-Once you have adb correctly installed in your computer you're almost done, what you have to do now is connect your phone to your computer, open the Terminal and simply paste this text and hit enter:
+## How to use
 
-    adb shell pm grant io.github.rsookram.greyscale android.permission.WRITE_SECURE_SETTINGS
+In order to use Greyscale, you must manually grant it the
+[`WRITE_SECURE_SETTINGS`](https://developer.android.com/reference/android/Manifest.permission#WRITE_SECURE_SETTINGS)
+permission, since this permission is not normally available to third party
+apps.
 
-You're done, enjoy Greyscale!
+This can be done through adb by running the following from the command line:
+
+```
+adb shell pm grant io.github.rsookram.greyscale android.permission.WRITE_SECURE_SETTINGS
+```
+
+If you later wanted to remove the permission, you can run:
+
+```
+adb shell pm revoke io.github.rsookram.greyscale android.permission.WRITE_SECURE_SETTINGS
+```
+
+Once this is done,
+[adding the quick settings tile](https://support.google.com/android/answer/9083864)
+is all that's left to do before you can use it.
+
+
+## Why use it?
+
+This same option exists under `Developer Options > Simulate color space`, but
+it's convenient to have a quick settings tile if you want to change it
+frequently.
+
+Also of note is that the APK is < 20 KB in size, and there are no third party
+dependencies used in the app.
+
+
+## Forked!
+
+This was forked from
+[BerenLuth/Greyscale](https://github.com/BerenLuth/Greyscale) which in turn
+was forked from [fei-ke/Greyscale](https://github.com/fei-ke/Greyscale). Almost
+all of the code has been changed since being forked however.
