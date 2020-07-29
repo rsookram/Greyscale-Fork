@@ -1,3 +1,11 @@
+# Not Maintained
+
+This repository started as a fork, but since almost all of its code was
+changed, I turned it into a standalone repository which can be found
+[here](https://github.com/rsookram/Greyscale). Future maintenance on the app
+will happen in that repository.
+
+
 # Greyscale
 
 Greyscale is a quick settings tile for Android which allows you to toggle a
